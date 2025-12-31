@@ -270,6 +270,23 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 }
 
 /* =========================
+   FOOTER
+   ========================= */
+.site-footer {
+  background: #f7f6f2;
+  color: #1a1a1a;
+  text-align: center;
+  padding: 40px 10%;
+  font-size: 14px;
+}
+
+.site-footer a {
+  color: #1a1a1a;
+  text-decoration: underline;
+  margin-right: 12px;
+}
+
+/* =========================
    MOBILE (<=768px)
    ========================= */
 @media (max-width:768px) {
@@ -319,4 +336,37 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 
   /* Ocultar lang switch */
   .lang-switch { display:none; }
+}
+
+/* =========================
+   AJUSTES ESPAÑOL RESPONSIVE
+   ========================= */
+@media (max-width:768px) {
+  /* Hero quote más espacioso para español */
+  .hero-quote {
+    font-size: 18px; /* ya lo tienes, pero se puede ajustar si queda muy largo */
+    line-height: 1.9;
+    padding: 24px 16px;
+  }
+
+  /* Overlay text ligeramente más pequeño si se desborda */
+  #collection .overlay p,
+  #heritage .overlay p,
+  #craft .overlay p,
+  #eco .overlay p,
+  #maintenance .overlay p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* Captions de contacto */
+  .contact-caption {
+    font-size: 12px;
+  }
+
+  /* Footer: permitir wrap si los enlaces son largos */
+  .site-footer p a {
+    display: inline-block;
+    margin: 4px 6px 4px 0;
+  }
 }
