@@ -400,4 +400,15 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   color: #3a3a3a;
   font-weight: 300;
 }
+/* COLLECTION RHYTHM */
+
+/* Dynamics: más aire */
+.collection-dynamics .animal {
+  margin-bottom: 72px;
+}
+
+/* MiniMini: más compacto */
+.collection-minimini .animal {
+  margin-bottom: 42px;
+}
 }
