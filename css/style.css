@@ -39,7 +39,13 @@ body {
   position:relative;
 }
 
-.logo { height:24px; }
+.logo { 
+  height: 20px;               /* Un poco más pequeño para dar aire */
+  width: auto;
+  opacity: 0.95;              /* Suaviza el impacto visual */
+  filter: drop-shadow(0 0 0.2px rgba(0,0,0,0.1)); /* Truco para extra nitidez */
+  transition: transform 0.3s ease;
+}
 
 /* =========================
    MAIN NAV DESKTOP
@@ -160,10 +166,26 @@ body {
    ========================= */
 .section { padding:60px 10%; }
 .section-title { font-size:32px; margin-bottom:32px; }
-.subsection-title { font-size:26px; margin:24px 0 28px; }
+.subsection-title {
+  margin-top: 60px;
+  margin-bottom: 48px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+}
+.section-title + .subsection-title {
+  margin-top: 40px;
+}
 
 /* ANIMALS */
 .animal { margin-bottom:48px; }
+.collection-dynamics .animal {
+  margin-bottom: 70px;
+}
+
+.collection-minimini .animal {
+  margin-bottom: 40px;
+}
 .animal img { width:100%; display:block; }
 
 /* BACKGROUND SECTIONS */
@@ -393,12 +415,13 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   
   /* PRODUCT NAMES */
 .animal-name {
-  margin-top: 18px;
-  font-size: 12px;
-  letter-spacing: 1.6px;
+  margin-top: 14px;          /* más separación respecto a la imagen */
+  font-size: 10px;
+  font-weight: 200;          /* más fino */
+  letter-spacing: 3px;     /* respiración premium */
   text-transform: uppercase;
-  color: #3a3a3a;
-  font-weight: 300;
+  color: #8e8e8e;
+  opacity: 0.85;
 }
 /* COLLECTION RHYTHM */
 
@@ -410,5 +433,14 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 /* MiniMini: más compacto */
 .collection-minimini .animal {
   margin-bottom: 42px;
+}
+/* COLLECTION – ritmo editorial */
+
+.collection-dynamics .animal {
+  margin-bottom: 64px; /* más aire */
+}
+
+.collection-minimini .animal {
+  margin-bottom: 36px; /* más compacto */
 }
 }
