@@ -123,15 +123,36 @@ body {
 .hero { position:relative; margin-top:88px; }
 .hero img { width:100%; display:block; }
 .hero-quote {
-  position:absolute;
-  top:20%;
-  left:6%;
-  max-width:460px;
-  font-size:20px;
-  line-height:1.7;
-  font-weight:300;
-  color:#f1f0ea;
-  letter-spacing:0.3px;
+  position: absolute;
+  top: 206px;
+  left: 60px;
+  max-width: 420px;
+  color: #edece6; /* un punto más oscuro que el perla */
+}
+.quote-text {
+  display: block;
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  margin-bottom: 26px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.quote-author {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.quote-place {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  opacity: 0.7;
 }
 
 /* =========================
