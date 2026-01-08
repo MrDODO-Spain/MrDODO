@@ -390,4 +390,14 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     display: inline-block;
     margin: 4px 6px 4px 0;
   }
+  
+  /* PRODUCT NAMES */
+.animal-name {
+  margin-top: 18px;
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  font-weight: 300;
+}
 }
