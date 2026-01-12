@@ -352,30 +352,39 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
 
   /* Off-canvas menu */
-  .main-nav {
-    display:none;
-    position:fixed;
-    top:0;
-    left:-200px;
-    width:200px;
-    height:100%;
-    background:#fff;
-    box-shadow:5px 0 30px rgba(0,0,0,0.05);
-    transition:left 0.3s ease;
-    flex-direction:column;
-    z-index:1001;
-    padding-top:80px;
+.main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;                /* Alineado totalmente a la izquierda */
+    width: 100%;            /* Ocupa todo el ancho */
+    height: calc(100vh - var(--header-height)); /* Ocupa todo el alto restante */
+    background: #fff;
+    display: none;          /* Se oculta por defecto */
+    flex-direction: column;
+    padding: 60px 40px;     /* Espaciado interno generoso */
+    z-index: 999;
   }
-  .main-nav.open { left:0; display:flex; }
 
-  .main-nav ul, .main-nav li { margin:0; padding:0; list-style:none; flex-direction:column; }
-  .main-nav > ul > li { width:100%; }
-  .main-nav > ul > li > a {
-    display:block;
-    padding:8px 16px;
-    text-align:left;
-    font-size:16px;
-    border-bottom:1px solid #eee;
+  .main-nav.open {
+    display: flex;          /* Se muestra al abrir */
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los textos a la izquierda */
+    width: 100%;
+  }
+
+  .main-nav ul li {
+    margin: 20px 0;         /* Más espacio vertical entre enlaces */
+    width: 100%;
+  }
+
+  .main-nav ul li a {
+    font-size: 24px;        /* Tamaño de fuente más "premium" y grande */
+    text-align: left;       /* Texto a la izquierda */
+    width: 100%;
+    display: block;
   }
   .has-submenu .submenu { display:block; padding-left:20px; margin-top:0; }
   .has-submenu .submenu li a { padding:6px 0 6px 12px; font-size:15px; border-bottom:none; }
