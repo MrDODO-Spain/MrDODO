@@ -12,7 +12,6 @@ body {
   color: #1a1a1a;
   line-height: 1.65;
   font-weight: 300;
-  /* ESTO ES LO NUEVO: Suavizado tipo Apple */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -47,12 +46,9 @@ body {
   height: 25px;
   width: auto;
   display: block;
-  /* Estas 3 líneas son la clave de la nitidez */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   shape-rendering: geometricPrecision;
-  
-  /* Eliminamos filtros que puedan emborronar */
   filter: none !important;
   opacity: 1 !important;
 }
@@ -76,7 +72,6 @@ body {
 
 .main-nav a:hover { opacity:0.6; }
 
-/* Submenu Desktop */
 .has-submenu { position: relative; }
 .has-submenu .submenu {
   display: none;
@@ -100,7 +95,7 @@ body {
   white-space:nowrap;
 }
 
-/* Scroll margin para subsecciones */
+/* Scroll margin fixes */
 #collection-dynamics { scroll-margin-top: calc(var(--header-height) + 10px); }
 #collection-minimini { scroll-margin-top: calc(var(--header-height) + 30px); }
 #maintenance { scroll-margin-top: calc(var(--header-height) + 10px); }
@@ -143,7 +138,7 @@ body {
   top: 206px;
   left: 60px;
   max-width: 420px;
-  color: #edece6; /* un punto más oscuro que el perla */
+  color: #edece6;
 }
 .quote-text {
   display: block;
@@ -154,7 +149,6 @@ body {
   margin-bottom: 26px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
-
 .quote-author {
   display: block;
   font-size: 14px;
@@ -163,7 +157,6 @@ body {
   opacity: 0.9;
   margin-bottom: 2px;
 }
-
 .quote-place {
   display: block;
   font-size: 11px;
@@ -172,7 +165,7 @@ body {
 }
 
 /* =========================
-   SECTIONS
+   SECTIONS & ANIMALS
    ========================= */
 .section { padding:60px 10%; }
 .section-title { font-size:32px; margin-bottom:32px; }
@@ -183,22 +176,23 @@ body {
   font-weight: 400;
   letter-spacing: 0.6px;
 }
-.section-title + .subsection-title {
-  margin-top: 40px;
-}
+.section-title + .subsection-title { margin-top: 40px; }
 
-/* ANIMALS */
 .animal { margin-bottom:48px; }
-.collection-dynamics .animal {
-  margin-bottom: 70px;
-}
-
-.collection-minimini .animal {
-  margin-bottom: 40px;
-}
 .animal img { width:100%; display:block; }
+.animal-name {
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 200;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8e8e8e;
+  opacity: 0.85;
+}
 
-/* BACKGROUND SECTIONS */
+/* =========================
+   BACKGROUND SECTIONS
+   ========================= */
 .bg {
   min-height:80vh;
   background-size:cover;
@@ -221,26 +215,22 @@ body {
 .overlay p { font-size:15px; line-height:1.75; }
 .overlay blockquote { margin-top:24px; font-style:italic; }
 
-/* FULL IMAGES */
 .full-image, .final-image img { width:100%; display:block; }
-
-/* HEADINGS */
 h2 { font-size:32px; font-weight:400; letter-spacing:0.6px; }
 h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 
-/* ANCHOR OFFSET FIX FOR FIXED HEADER */
 #collection, #heritage, #craft, #eco, #contact { scroll-margin-top:var(--header-height); }
 
 /* =========================
-   PACKAGING
+   PACKAGING & CONTACT
    ========================= */
-.packaging .divider {
+.packaging .divider, .contact .divider {
   width: 200px;
   height: 1px;
   background-color: #c0c0c0;
   margin: 24px auto;
 }
-.packaging h2 { text-align: center; margin: 16px 0 32px; }
+.packaging h2, .contact h2 { text-align: center; margin: 16px 0 32px; }
 .packaging p {
   font-size: 18px;
   font-weight: 300;
@@ -252,48 +242,14 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   letter-spacing: 0.3px;
   font-style: italic;
 }
+.contact-text { font-size: 14px; text-align: center; margin-bottom: 32px; }
+.contact-images { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.contact-item { display: flex; flex-direction: column; align-items: center; }
+.contact-item img { width: 200px; height: auto; }
+.contact-caption { margin-top: 8px; font-size: 14px; font-style: italic; text-align: center; }
 
 /* =========================
-   CONTACT
-   ========================= */
-.contact .divider {
-  width: 200px;
-  height: 1px;
-  background-color: #c0c0c0;
-  margin: 24px auto;
-}
-.contact h2 { text-align: center; margin: 16px 0 24px; }
-.contact-text {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-/* Contact images con captions */
-.contact-images {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-.contact-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.contact-item img {
-  width: 200px; /* tamaño de desktop */
-  height: auto;
-}
-.contact-caption {
-  margin-top: 8px;
-  font-size: 14px;
-  font-style: italic;
-  text-align: center;
-}
-
-/* =========================
-   COOKIE POPUP
+   COOKIE POPUP & FOOTER
    ========================= */
 .cookie-popup {
   position: fixed;
@@ -306,12 +262,11 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 2000;
-  display: none; /* inicialmente oculto */
+  display: none;
   align-items: center;
   gap: 12px;
   font-size: 14px;
 }
-
 .cookie-popup button {
   background: #fff;
   color: #1a1a1a;
@@ -321,10 +276,6 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   font-weight: 500;
   border-radius: 4px;
 }
-
-/* =========================
-   FOOTER
-   ========================= */
 .site-footer {
   background: #f7f6f2;
   color: #1a1a1a;
@@ -332,197 +283,84 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   padding: 40px 10%;
   font-size: 14px;
 }
-
-.site-footer a {
-  color: #1a1a1a;
-  text-decoration: underline;
-  margin-right: 12px;
-}
+.site-footer a { color: #1a1a1a; text-decoration: underline; margin-right: 12px; }
 
 /* =========================
    MOBILE (<=768px)
    ========================= */
 @media (max-width:768px) {
-
-  /* Header logo */
   .header-inner { justify-content:center; padding:0 16px; }
   .logo { height:32px; display:block; margin:0 auto; }
-
-  /* Mostrar hamburguesa */
   .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
 
-  /* Off-canvas menu */
-.main-nav {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;                /* Alineado totalmente a la izquierda */
-    width: 100%;            /* Ocupa todo el ancho */
-    height: calc(100vh - var(--header-height)); /* Ocupa todo el alto restante */
-    background: #fff;
-    display: none;          /* Se oculta por defecto */
-    flex-direction: column;
-    padding: 60px 40px;     /* Espaciado interno generoso */
-    z-index: 999;
-  }
-
-  .main-nav.open {
-    display: flex;          /* Se muestra al abrir */
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    align-items: flex-start; /* Alinea los textos a la izquierda */
-    width: 100%;
-  }
-
-  .main-nav ul li {
-    margin: 20px 0;         /* Más espacio vertical entre enlaces */
-    width: 100%;
-  }
-
-  .main-nav ul li a {
-    font-size: 24px;        /* Tamaño de fuente más "premium" y grande */
-    text-align: left;       /* Texto a la izquierda */
-    width: 100%;
-    display: block;
-  }
+  /* FULL SCREEN MENU AJUSTADO */
   .main-nav {
     position: fixed;
     top: var(--header-height);
     left: 0;
     width: 100%;
-    /* 1. Altura exacta para que no se pase del final de la pantalla */
-    height: calc(100vh - var(--header-height)); 
+    height: calc(100vh - var(--header-height));
     background: #fff;
     display: none;
     flex-direction: column;
-    padding: 40px; 
+    padding: 20px 40px; /* Reducido para que Heritage suba */
     z-index: 999;
-
-    /* 2. ESTO PERMITE VER LOS ELEMENTOS QUE FALTAN */
-    overflow-y: auto; 
-    /* 3. Mejora el scroll en iPhone */
-    -webkit-overflow-scrolling: touch; 
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Asegúrate de que la lista no tenga alturas raras */
+  .main-nav.open { display: flex; }
+
   .main-nav ul {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px; /* Espacio controlado entre elementos */
+    width: 100%;
+    gap: 20px; /* Espacio equilibrado entre Heritage, Craft, etc. */
   }
+
+  .main-nav ul li { width: 100%; margin: 0; }
+
+  .main-nav ul li a {
+    font-size: 24px;
+    text-align: left;
+    width: 100%;
+    display: block;
+    letter-spacing: 0.5px;
+  }
+
+  /* SUBMENU MÓVIL */
   .submenu {
-    position: static;       /* Se despliega hacia abajo, no flota */
+    display: block !important;
+    position: static;
     box-shadow: none;
-    padding-left: 20px;     /* Sangría para notar que es un submenú */
-    margin-top: 15px;
-    display: block;         /* Siempre visible cuando el padre está ahí */
+    padding-left: 20px;
+    margin-top: 10px;
   }
-  
-  .submenu li {
-    margin: 10px 0;
-  }
-  
+  .submenu li { margin: 8px 0 !important; }
   .submenu li a {
-    font-size: 18px;        /* Un poco más pequeño que el menú principal */
-    color: #666;            /* Color más suave */
+    font-size: 18px !important;
+    color: #666 !important;
+    padding: 0 !important;
   }
-  .has-submenu .submenu { display:block; padding-left:20px; margin-top:0; }
-  .has-submenu .submenu li a { padding:6px 0 6px 12px; font-size:15px; border-bottom:none; }
 
-  /* Hero quote adjustments */
-  .hero-quote { position:static; color:#1a1a1a; padding:24px; max-width:none; font-size:18px; }
-
-  /* Contact images mobile: ancho 60% */
+  .hero-quote { position:static; color:#1a1a1a; padding:24px 16px; max-width:none; font-size:18px; line-height: 1.9; }
   .contact-item img { width: 60%; }
-  .contact-caption { font-size: 12px; }
-
-  /* Ocultar lang switch */
   .lang-switch { display:none; }
+  
+  /* Ritmo editorial móvil */
+  .collection-dynamics .animal { margin-bottom: 64px; }
+  .collection-minimini .animal { margin-bottom: 36px; }
 }
-
 
 /* =========================
-   AJUSTES ESPAÑOL RESPONSIVE
+   LANDSCAPE (HORIZONTAL)
    ========================= */
-@media (max-width:768px) {
-  /* Hero quote más espacioso para español */
-  .hero-quote {
-    font-size: 18px; /* ya lo tienes, pero se puede ajustar si queda muy largo */
-    line-height: 1.9;
-    padding: 24px 16px;
-  }
-
-  /* Overlay text ligeramente más pequeño si se desborda */
-  #collection .overlay p,
-  #heritage .overlay p,
-  #craft .overlay p,
-  #eco .overlay p,
-  #maintenance .overlay p {
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  /* Captions de contacto */
-  .contact-caption {
-    font-size: 12px;
-  }
-
-  /* Footer: permitir wrap si los enlaces son largos */
-  .site-footer p a {
-    display: inline-block;
-    margin: 4px 6px 4px 0;
-  }
-  
-  /* PRODUCT NAMES */
-.animal-name {
-  margin-top: 14px;          /* más separación respecto a la imagen */
-  font-size: 10px;
-  font-weight: 200;          /* más fino */
-  letter-spacing: 3px;     /* respiración premium */
-  text-transform: uppercase;
-  color: #8e8e8e;
-  opacity: 0.85;
-}
-/* COLLECTION RHYTHM */
-
-/* Dynamics: más aire */
-.collection-dynamics .animal {
-  margin-bottom: 72px;
-}
-
-/* MiniMini: más compacto */
-.collection-minimini .animal {
-  margin-bottom: 42px;
-}
-/* COLLECTION – ritmo editorial */
-
-.collection-dynamics .animal {
-  margin-bottom: 64px; /* más aire */
-}
-
-.collection-minimini .animal {
-  margin-bottom: 36px; /* más compacto */
-}
-/* AJUSTE PARA MÓVIL EN HORIZONTAL (LANDSCAPE) */
 @media (max-width: 900px) and (orientation: landscape) {
-  :root {
-    --header-height: 60px; /* Reducimos de 88px a 60px */
-  }
-
-  .logo {
-    height: 22px; /* Logo más discreto */
-  }
-
-  /* Ajustamos el botón de hamburguesa para que no quede gigante */
-  .menu-toggle {
-    transform: scale(0.8);
-    margin-right: -5px;
-  }
-  
-  /* Reducimos el padding lateral para ganar espacio */
-  .header-inner {
-    padding: 0 30px;
-  }
+  :root { --header-height: 60px; }
+  .logo { height: 22px; }
+  .menu-toggle { transform: scale(0.8); margin-right: -5px; }
+  .header-inner { padding: 0 30px; }
+  .main-nav { padding: 10px 40px; }
+  .main-nav ul { gap: 10px; }
+  .main-nav ul li a { font-size: 20px; }
 }
