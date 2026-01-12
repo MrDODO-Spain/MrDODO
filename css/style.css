@@ -7,11 +7,15 @@
    BASE
    ========================= */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background-color: #f7f6f2;
   color: #1a1a1a;
   line-height: 1.65;
   font-weight: 300;
+  /* ESTO ES LO NUEVO: Suavizado tipo Apple */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 :root { --header-height: 88px; }
@@ -35,16 +39,22 @@ body {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 60px;
+  padding:0 65px;
   position:relative;
 }
 
-.logo { 
-  height: 20px;               /* Un poco más pequeño para dar aire */
+.logo {
+  height: 20px;
   width: auto;
-  opacity: 0.95;              /* Suaviza el impacto visual */
-  filter: drop-shadow(0 0 0.2px rgba(0,0,0,0.1)); /* Truco para extra nitidez */
-  transition: transform 0.3s ease;
+  display: block;
+  /* Estas 3 líneas son la clave de la nitidez */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  shape-rendering: geometricPrecision;
+  
+  /* Eliminamos filtros que puedan emborronar */
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 /* =========================
@@ -341,54 +351,35 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   /* Mostrar hamburguesa */
   .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
 
-/* NUEVO MENÚ FULL SCREEN ESTILO CARL HANSEN */
+  /* Off-canvas menu */
   .main-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    z-index: 1001;
-    flex-direction: column;
-    justify-content: center; /* Centra los textos verticalmente */
-    align-items: center;     /* Centra los textos horizontalmente */
-    padding: 0;
-    transition: all 0.3s ease;
+    display:none;
+    position:fixed;
+    top:0;
+    left:-200px;
+    width:200px;
+    height:100%;
+    background:#fff;
+    box-shadow:5px 0 30px rgba(0,0,0,0.05);
+    transition:left 0.3s ease;
+    flex-direction:column;
+    z-index:1001;
+    padding-top:80px;
   }
+  .main-nav.open { left:0; display:flex; }
 
-  .main-nav.open { 
-    display: flex; 
-  }
-
-  .main-nav ul {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px; /* Espacio elegante entre enlaces */
-  }
-
-  .main-nav > ul > li { width: auto; list-style: none; }
-
+  .main-nav ul, .main-nav li { margin:0; padding:0; list-style:none; flex-direction:column; }
+  .main-nav > ul > li { width:100%; }
   .main-nav > ul > li > a {
-    display: block;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 20px;       /* Tamaño grande como Carl Hansen */
-    letter-spacing: 5px;    /* Mucho aire entre letras (Lujo) */
-    text-transform: uppercase;
-    border-bottom: none !important; 
-    color: #1a1a1a;
-    font-weight: 300;
-    text-decoration: none;
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    font-size:16px;
+    border-bottom:1px solid #eee;
   }
+  .has-submenu .submenu { display:block; padding-left:20px; margin-top:0; }
+  .has-submenu .submenu li a { padding:6px 0 6px 12px; font-size:15px; border-bottom:none; }
 
-  /* Asegura que el botón de cerrar esté por encima del fondo blanco */
-  .menu-toggle {
-    z-index: 1002; 
-  }
   /* Hero quote adjustments */
   .hero-quote { position:static; color:#1a1a1a; padding:24px; max-width:none; font-size:18px; }
 
