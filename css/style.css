@@ -44,7 +44,7 @@ body {
 }
 
 .logo {
-  height: 20px;
+  height: 25px;
   width: auto;
   display: block;
   /* Estas 3 líneas son la clave de la nitidez */
@@ -453,4 +453,24 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 .collection-minimini .animal {
   margin-bottom: 36px; /* más compacto */
 }
+/* AJUSTE PARA MÓVIL EN HORIZONTAL (LANDSCAPE) */
+@media (max-width: 900px) and (orientation: landscape) {
+  :root {
+    --header-height: 60px; /* Reducimos de 88px a 60px */
+  }
+
+  .logo {
+    height: 22px; /* Logo más discreto */
+  }
+
+  /* Ajustamos el botón de hamburguesa para que no quede gigante */
+  .menu-toggle {
+    transform: scale(0.8);
+    margin-right: -5px;
+  }
+  
+  /* Reducimos el padding lateral para ganar espacio */
+  .header-inner {
+    padding: 0 30px;
+  }
 }
