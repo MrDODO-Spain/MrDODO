@@ -386,6 +386,48 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     width: 100%;
     display: block;
   }
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    /* 1. Altura exacta para que no se pase del final de la pantalla */
+    height: calc(100vh - var(--header-height)); 
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    padding: 40px; 
+    z-index: 999;
+
+    /* 2. ESTO PERMITE VER LOS ELEMENTOS QUE FALTAN */
+    overflow-y: auto; 
+    /* 3. Mejora el scroll en iPhone */
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  /* Asegúrate de que la lista no tenga alturas raras */
+  .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px; /* Espacio controlado entre elementos */
+  }
+  .submenu {
+    position: static;       /* Se despliega hacia abajo, no flota */
+    box-shadow: none;
+    padding-left: 20px;     /* Sangría para notar que es un submenú */
+    margin-top: 15px;
+    display: block;         /* Siempre visible cuando el padre está ahí */
+  }
+  
+  .submenu li {
+    margin: 10px 0;
+  }
+  
+  .submenu li a {
+    font-size: 18px;        /* Un poco más pequeño que el menú principal */
+    color: #666;            /* Color más suave */
+  }
   .has-submenu .submenu { display:block; padding-left:20px; margin-top:0; }
   .has-submenu .submenu li a { padding:6px 0 6px 12px; font-size:15px; border-bottom:none; }
 
@@ -399,6 +441,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   /* Ocultar lang switch */
   .lang-switch { display:none; }
 }
+
 
 /* =========================
    AJUSTES ESPAÑOL RESPONSIVE
