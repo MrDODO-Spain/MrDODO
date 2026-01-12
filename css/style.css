@@ -83,10 +83,8 @@ body {
   padding:8px 0;
   min-width:160px;
 }
-.has-submenu:hover .submenu,
-.has-submenu .submenu:hover {
-  display:block;
-}
+.has-submenu:hover .submenu { display:block; }
+
 .has-submenu .submenu li a {
   display:block;
   padding:8px 16px;
@@ -94,15 +92,6 @@ body {
   color:#1a1a1a;
   white-space:nowrap;
 }
-
-/* Scroll margin fixes */
-#collection-dynamics { scroll-margin-top: calc(var(--header-height) + 10px); }
-#collection-minimini { scroll-margin-top: calc(var(--header-height) + 30px); }
-#maintenance { scroll-margin-top: calc(var(--header-height) + 10px); }
-
-/* LANG SWITCH */
-.lang-switch { font-size:12px; letter-spacing:0.5px; }
-.lang-switch .active { font-weight:500; }
 
 /* =========================
    MENU TOGGLE (HAMBURGUESA)
@@ -129,54 +118,13 @@ body {
 }
 
 /* =========================
-   HERO
+   HERO & SECTIONS
    ========================= */
 .hero { position:relative; margin-top:88px; }
 .hero img { width:100%; display:block; }
-.hero-quote {
-  position: absolute;
-  top: 206px;
-  left: 60px;
-  max-width: 420px;
-  color: #edece6;
-}
-.quote-text {
-  display: block;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 300;
-  letter-spacing: 0.3px;
-  margin-bottom: 26px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-.quote-author {
-  display: block;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-  opacity: 0.9;
-  margin-bottom: 2px;
-}
-.quote-place {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 1.6px;
-  opacity: 0.7;
-}
 
-/* =========================
-   SECTIONS & ANIMALS
-   ========================= */
 .section { padding:60px 10%; }
 .section-title { font-size:32px; margin-bottom:32px; }
-.subsection-title {
-  margin-top: 60px;
-  margin-bottom: 48px;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-}
-.section-title + .subsection-title { margin-top: 40px; }
 
 .animal { margin-bottom:48px; }
 .animal img { width:100%; display:block; }
@@ -187,113 +135,16 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #8e8e8e;
-  opacity: 0.85;
 }
 
 /* =========================
-   BACKGROUND SECTIONS
-   ========================= */
-.bg {
-  min-height:80vh;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  padding-top:60px;
-  padding-bottom:60px;
-}
-.heritage { background-image: url("../images/backgrounds/heritage.jpg"); }
-.craft { background-image: url("../images/backgrounds/craftsmanship.jpg"); }
-.eco { background-image: url("../images/backgrounds/eco.jpg"); }
-.maintenance { background-image: url("../images/backgrounds/maintenance.jpg"); }
-.overlay {
-  background: rgba(255,255,255,0.9);
-  padding:72px 68px;
-  max-width:640px;
-  margin-left:8%;
-}
-.overlay p { font-size:15px; line-height:1.75; }
-.overlay blockquote { margin-top:24px; font-style:italic; }
-
-.full-image, .final-image img { width:100%; display:block; }
-h2 { font-size:32px; font-weight:400; letter-spacing:0.6px; }
-h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
-
-#collection, #heritage, #craft, #eco, #contact { scroll-margin-top:var(--header-height); }
-
-/* =========================
-   PACKAGING & CONTACT
-   ========================= */
-.packaging .divider, .contact .divider {
-  width: 200px;
-  height: 1px;
-  background-color: #c0c0c0;
-  margin: 24px auto;
-}
-.packaging h2, .contact h2 { text-align: center; margin: 16px 0 32px; }
-.packaging p {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  text-align: center;
-  color: #1a1a1a;
-  max-width: 640px;
-  margin: 24px auto 48px;
-  letter-spacing: 0.3px;
-  font-style: italic;
-}
-.contact-text { font-size: 14px; text-align: center; margin-bottom: 32px; }
-.contact-images { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.contact-item { display: flex; flex-direction: column; align-items: center; }
-.contact-item img { width: 200px; height: auto; }
-.contact-caption { margin-top: 8px; font-size: 14px; font-style: italic; text-align: center; }
-
-/* =========================
-   COOKIE POPUP & FOOTER
-   ========================= */
-.cookie-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(30,30,30,0.95);
-  color: #fff;
-  padding: 16px 24px;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 2000;
-  display: none;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-}
-.cookie-popup button {
-  background: #fff;
-  color: #1a1a1a;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-weight: 500;
-  border-radius: 4px;
-}
-.site-footer {
-  background: #f7f6f2;
-  color: #1a1a1a;
-  text-align: center;
-  padding: 40px 10%;
-  font-size: 14px;
-}
-.site-footer a { color: #1a1a1a; text-decoration: underline; margin-right: 12px; }
-
-/* =========================
-   MOBILE (<=768px)
+   MOBILE (<=768px) - AJUSTADO PARA VER TODO EL MENÚ
    ========================= */
 @media (max-width:768px) {
   .header-inner { justify-content:center; padding:0 16px; }
   .logo { height:32px; display:block; margin:0 auto; }
   .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
 
-  /* FULL SCREEN MENU AJUSTADO */
   .main-nav {
     position: fixed;
     top: var(--header-height);
@@ -303,7 +154,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     background: #fff;
     display: none;
     flex-direction: column;
-    padding: 20px 40px; /* Reducido para que Heritage suba */
+    padding: 15px 40px; /* Reducido para ganar espacio arriba */
     z-index: 999;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -315,41 +166,34 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 20px; /* Espacio equilibrado entre Heritage, Craft, etc. */
+    gap: 8px; /* Espacio mínimo entre ítems para que quepa todo */
   }
 
-  .main-nav ul li { width: 100%; margin: 0; }
-
   .main-nav ul li a {
-    font-size: 24px;
+    font-size: 19px; /* Fuente más compacta para que Heritage suba */
     text-align: left;
     width: 100%;
     display: block;
-    letter-spacing: 0.5px;
+    padding: 4px 0;
   }
 
-  /* SUBMENU MÓVIL */
+  /* SUBMENU MÓVIL SÚPER COMPACTO */
   .submenu {
     display: block !important;
     position: static;
     box-shadow: none;
-    padding-left: 20px;
-    margin-top: 10px;
+    padding-left: 15px;
+    margin-top: 2px;
+    margin-bottom: 5px;
   }
-  .submenu li { margin: 8px 0 !important; }
+  .submenu li { margin: 0 !important; }
   .submenu li a {
-    font-size: 18px !important;
-    color: #666 !important;
-    padding: 0 !important;
+    font-size: 15px !important; /* Más pequeño para ahorrar espacio vertical */
+    color: #888 !important;
+    padding: 2px 0 !important;
   }
 
-  .hero-quote { position:static; color:#1a1a1a; padding:24px 16px; max-width:none; font-size:18px; line-height: 1.9; }
-  .contact-item img { width: 60%; }
   .lang-switch { display:none; }
-  
-  /* Ritmo editorial móvil */
-  .collection-dynamics .animal { margin-bottom: 64px; }
-  .collection-minimini .animal { margin-bottom: 36px; }
 }
 
 /* =========================
@@ -358,9 +202,24 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 @media (max-width: 900px) and (orientation: landscape) {
   :root { --header-height: 60px; }
   .logo { height: 22px; }
-  .menu-toggle { transform: scale(0.8); margin-right: -5px; }
-  .header-inner { padding: 0 30px; }
-  .main-nav { padding: 10px 40px; }
-  .main-nav ul { gap: 10px; }
-  .main-nav ul li a { font-size: 20px; }
+  .menu-toggle { transform: scale(0.8); }
+  .main-nav { padding: 5px 40px; }
+  .main-nav ul { gap: 4px; }
+  .main-nav ul li a { font-size: 17px; }
+}
+
+/* =========================
+   FOOTER & COOKIES
+   ========================= */
+.site-footer { padding: 40px 10%; text-align: center; font-size: 14px; background: #f7f6f2; }
+.cookie-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30,30,30,0.95);
+  color: #fff;
+  padding: 16px 24px;
+  display: none;
+  z-index: 2000;
 }
