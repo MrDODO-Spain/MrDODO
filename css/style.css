@@ -134,7 +134,7 @@ body {
 }
 
 /* =========================
-   MOBILE (<=768px)
+   MOBILE (<=768px) - CORREGIDO
    ========================= */
 @media (max-width:768px) {
   .header-inner { justify-content:center; padding:0 16px; }
@@ -150,7 +150,7 @@ body {
     background: #fff;
     display: none;
     flex-direction: column;
-    padding: 20px 40px; 
+    padding: 10px 40px; /* Padding reducido para ganar espacio arriba */
     z-index: 999;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -162,31 +162,31 @@ body {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 10px;
+    gap: 0; /* Controlamos el espacio con el padding de los enlaces */
   }
 
   .main-nav ul li a {
-    font-size: 19px;
-    padding: 8px 0;
+    font-size: 18px; /* Fuente ligeramente más pequeña para que quepa más */
+    padding: 10px 0;
     display: block;
     border-bottom: 1px solid #f2f2f2;
     width: 100%;
   }
 
-  /* SUBMENU MÓVIL COMPACTO PARA QUE HERITAGE SUBA */
+  /* SUBMENU MÓVIL ULTRA COMPACTO */
   .submenu {
     display: block !important;
     position: static;
     box-shadow: none;
-    padding-left: 20px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    padding-left: 15px;
+    margin-top: 0;
+    margin-bottom: 5px;
   }
   .submenu li { margin: 0 !important; }
   .submenu li a {
-    font-size: 16px !important;
+    font-size: 15px !important; /* Más pequeño para que Heritage suba */
     color: #888 !important;
-    padding: 4px 0 !important;
+    padding: 5px 0 !important;
     border-bottom: none;
   }
 
@@ -201,9 +201,8 @@ body {
   :root { --header-height: 60px; }
   .logo { height: 22px; }
   .menu-toggle { transform: scale(0.8); }
-  .main-nav { padding: 10px 40px; }
-  .main-nav ul { gap: 4px; }
-  .main-nav ul li a { font-size: 17px; padding: 5px 0; }
+  .main-nav { padding: 5px 40px; }
+  .main-nav ul li a { font-size: 16px; padding: 6px 0; }
 }
 
 /* =========================
@@ -222,12 +221,4 @@ body {
   z-index: 2000;
   align-items: center;
   gap: 12px;
-}
-.cookie-popup button {
-  background: #fff;
-  color: #1a1a1a;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 4px;
 }
