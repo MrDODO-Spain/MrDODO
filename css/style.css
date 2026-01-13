@@ -346,8 +346,8 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     display:none;
     position:fixed;
     top:0;
-    left:-200px;
-    width:200px;
+    left:-250px;
+    width:250px;
     height:100%;
     background:#fff;
     box-shadow:5px 0 30px rgba(0,0,0,0.05);
@@ -355,6 +355,8 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     flex-direction:column;
     z-index:1001;
     padding-top:80px;
+    padding-left:40px;     /* ESTA ES LA CLAVE: Separa el texto del borde izquierdo */
+    padding-right:20px;    /* Margen de seguridad derecho */
   }
   .main-nav.open { left:0; display:flex; }
 
