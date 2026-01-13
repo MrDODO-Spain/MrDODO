@@ -133,7 +133,7 @@ body {
   top: 206px;
   left: 60px;
   max-width: 420px;
-  color: #edece6; /* un punto más oscuro que el perla */
+  color: #edece6; 
 }
 .quote-text {
   display: block;
@@ -272,7 +272,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   align-items: center;
 }
 .contact-item img {
-  width: 200px; /* tamaño de desktop */
+  width: 200px; 
   height: auto;
 }
 .contact-caption {
@@ -296,7 +296,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 2000;
-  display: none; /* inicialmente oculto */
+  display: none; 
   align-items: center;
   gap: 12px;
   font-size: 14px;
@@ -355,10 +355,26 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     flex-direction:column;
     z-index:1001;
     padding-top:80px;
-    padding-left:40px;     /* ESTA ES LA CLAVE: Separa el texto del borde izquierdo */
-    padding-right:20px;    /* Margen de seguridad derecho */
+    padding-left:40px;
+    padding-right:20px;
   }
   .main-nav.open { left:0; display:flex; }
+
+  /* NUEVO: Estilo de la X de cierre */
+  .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 40px; 
+    font-weight: 200; 
+    color: #1a1a1a;
+    line-height: 1;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+  }
 
   .main-nav ul, .main-nav li { margin:0; padding:0; list-style:none; flex-direction:column; }
   .main-nav > ul > li { width:100%; }
@@ -370,13 +386,12 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     border-bottom:1px solid #f2f2f2;
   }
   .has-submenu .submenu {
-    display: none; /* Cambiado de block a none */
+    display: none; 
     position: static;
     box-shadow: none;
     padding: 0 0 10px 20px;
     background: none;
   }
-  /* Añadimos esta regla para cuando se hace clic */
   .has-submenu.active .submenu {
     display: block;
   }
@@ -390,7 +405,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   /* Hero quote adjustments */
   .hero-quote { position:static; color:#1a1a1a; padding:24px; max-width:none; font-size:18px; }
 
-  /* Contact images mobile: ancho 60% */
+  /* Contact images mobile */
   .contact-item img { width: 60%; }
   .contact-caption { font-size: 12px; }
 
@@ -402,14 +417,12 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
    AJUSTES ESPAÑOL RESPONSIVE
    ========================= */
 @media (max-width:768px) {
-  /* Hero quote más espacioso para español */
   .hero-quote {
-    font-size: 18px; /* ya lo tienes, pero se puede ajustar si queda muy largo */
+    font-size: 18px; 
     line-height: 1.9;
     padding: 24px 16px;
   }
 
-  /* Overlay text ligeramente más pequeño si se desborda */
   #collection .overlay p,
   #heritage .overlay p,
   #craft .overlay p,
@@ -419,45 +432,38 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     line-height: 1.8;
   }
 
-  /* Captions de contacto */
   .contact-caption {
     font-size: 12px;
   }
 
-  /* Footer: permitir wrap si los enlaces son largos */
   .site-footer p a {
     display: inline-block;
     margin: 4px 6px 4px 0;
   }
   
-  /* PRODUCT NAMES */
 .animal-name {
-  margin-top: 14px;          /* más separación respecto a la imagen */
+  margin-top: 14px;
   font-size: 10px;
-  font-weight: 200;          /* más fino */
-  letter-spacing: 3px;     /* respiración premium */
+  font-weight: 200;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: #8e8e8e;
   opacity: 0.85;
 }
-/* COLLECTION RHYTHM */
 
-/* Dynamics: más aire */
 .collection-dynamics .animal {
   margin-bottom: 72px;
 }
 
-/* MiniMini: más compacto */
 .collection-minimini .animal {
   margin-bottom: 42px;
 }
-/* COLLECTION – ritmo editorial */
 
 .collection-dynamics .animal {
-  margin-bottom: 64px; /* más aire */
+  margin-bottom: 64px; 
 }
 
 .collection-minimini .animal {
-  margin-bottom: 36px; /* más compacto */
+  margin-bottom: 36px; 
 }
 }
