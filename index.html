@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. ESTILOS DEL VELO (OVERLAY) */
+    /* Estilos para el velo (overlay) */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -25,41 +25,21 @@
       opacity: 1;
     }
 
-    /* 2 Y 3. MEJORA TÁCTIL Y FEEDBACK VISUAL */
+    /* MEJORA PUNTO 2: Usabilidad táctil en móvil */
     @media (max-width: 768px) {
-      /* Área de clic generosa (Punto 2) */
       .main-nav > ul > li > a {
-        padding: 18px 0 !important; 
+        padding: 18px 0 !important; /* Aumentamos el área de clic vertical */
         display: flex;
         align-items: center;
         width: 100%;
-        transition: opacity 0.2s ease;
       }
       
-      /* Feedback visual al tocar enlaces (Punto 3) */
-      .main-nav > ul > li > a:active {
-        opacity: 0.5;
-      }
-
-      /* La X de cierre con Feedback (Punto 3) */
       .close-menu {
-        padding: 15px !important;
-        font-size: 45px !important;
-        line-height: 0.8 !important;
-        transition: transform 0.1s ease, opacity 0.1s ease;
-        -webkit-tap-highlight-color: transparent; /* Evita el cuadro azul feo en Android */
-      }
-      
-      .close-menu:active {
-        transform: scale(0.9); /* Se encoge un poquito al tocarla */
-        opacity: 0.7;
+        padding: 15px; /* X más fácil de tocar */
+        font-size: 45px;
       }
 
-      /* Feedback para la hamburguesa (Punto 3) */
-      .menu-toggle:active {
-        opacity: 0.6;
-      }
-
+      /* Ajuste para que el submenú también sea fácil de tocar */
       .has-submenu .submenu li a {
         padding: 12px 0 12px 20px !important;
       }
@@ -115,10 +95,172 @@
     Originality goes back to the simplicity<br>
     of the first solutions.
   </span>
-  <span class="quote-author">Antoni Gaudí</span>
-  <span class="quote-place">BARCELONA</span>
+
+  <span class="quote-author">
+    Antoni Gaudí
+  </span>
+
+  <span class="quote-place">
+    BARCELONA
+  </span>
 </div>
 </section>
+
+<section id="collection" class="section">
+  <h2 class="section-title">The Collection</h2>
+
+  <h3 id="collection-dynamics" class="subsection-title">Dynamics</h3>
+
+  <div class="collection-dynamics">
+    <div class="animal">
+      <img src="images/dynamics/dyn-01.jpg" alt="DODO">
+      <div class="animal-name">DODO</div>
+    </div>
+    <div class="animal">
+      <img src="images/dynamics/dyn-02.jpg" alt="PELIKAN">
+      <div class="animal-name">PELIKAN</div>
+    </div>
+    <div class="animal">
+      <img src="images/dynamics/dyn-03.jpg" alt="PAPAGAI">
+      <div class="animal-name">PAPAGAI</div>
+    </div>
+    <div class="animal">
+      <img src="images/dynamics/dyn-04.jpg" alt="MONKEY">
+      <div class="animal-name">MONKEY</div>
+    </div>
+    <div class="animal">
+      <img src="images/dynamics/dyn-05.jpg" alt="FLAMINGO">
+      <div class="animal-name">FLAMINGO</div>
+    </div>
+    <div class="animal">
+      <img src="images/dynamics/dyn-06.jpg" alt="ANTEATER">
+      <div class="animal-name">ANTEATER</div>
+    </div>
+  </div>
+
+  <h3 id="collection-minimini" class="subsection-title">MiniMini</h3>
+  <div class="collection-minimini">
+    <div class="animal">
+      <img src="images/minimini/mini-01.jpg" alt="BISON">
+      <div class="animal-name">BISON</div>
+    </div>
+    <div class="animal">
+      <img src="images/minimini/mini-02.jpg" alt="MOOSE">
+      <div class="animal-name">MOOSE</div>
+    </div>
+    <div class="animal">
+      <img src="images/minimini/mini-03.jpg" alt="DOG">
+      <div class="animal-name">DOG</div>
+    </div>
+    <div class="animal">
+      <img src="images/minimini/mini-04.jpg" alt="GOAT&SHEEP">
+      <div class="animal-name">GOAT&SHEEP</div>
+    </div>
+    <div class="animal">
+      <img src="images/minimini/mini-05.jpg" alt="WALRUS">
+      <div class="animal-name">WALRUS</div>
+    </div>
+  </div>
+</section>
+
+<section id="heritage" class="section bg heritage">
+  <div class="overlay">
+    <h2>A Family Business</h2>
+    <p>
+      Currently run by the third generation. Since 1914, our work has been driven
+      by respect for wood, nature, and time.
+    </p>
+    <blockquote>
+      “We don’t know if a company has a soul, but we like to think it can.”
+    </blockquote>
+  </div>
+</section>
+
+<section id="craft" class="section bg craft">
+  <div class="overlay">
+    <h2>Craftsmanship & Design</h2>
+    <p>
+      Behind every piece there lies vision, careful thought and skilled craftsmanship.
+      Every object comes with a story.
+    </p>
+    <blockquote>
+      “Love of wood is something that all mankind has in common.”<br>
+      — Hans Wegner
+    </blockquote>
+  </div>
+</section>
+
+<section id="eco" class="section bg eco">
+  <div class="overlay">
+    <h2>Eco & Sustainability</h2>
+    <p>
+      True sustainability means durability. Our wood is sourced responsibly
+      from sustainably managed European forests.
+    </p>
+  </div>
+</section>
+
+<section id="maintenance" class="section bg maintenance">
+  <div class="overlay">
+    <h2>Maintenance</h2>
+    <p>
+      Avoid direct sunlight and sudden humidity changes.
+      Wood matures beautifully over time.
+    </p>
+  </div>
+</section>
+
+<section class="section packaging">
+  <div class="divider"></div>
+  <h2 class="section-title">Our Packaging</h2>
+  <img src="images/packaging.jpg" alt="MrDODO packaging" class="full-image">
+  <p>Designed in Barcelona to accompany each creation with the same care it was made.</p>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="divider"></div>
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-text">
+    MrDODO<br>
+    C/. Aribau 95, 1º 3ª<br>
+    08036 BARCELONA Spain<br>
+    +34 626 08 52 21<br>
+    felipecapdevila@gmail.com
+  </p>
+  <div class="contact-images">
+    <div class="contact-item">
+      <img src="images/city.jpg" alt="Our city">
+      <span class="contact-caption">Our City</span>
+    </div>
+    <div class="contact-item">
+      <img src="images/neighbourhood.jpg" alt="Our neighbourhood">
+      <span class="contact-caption">Our Neighbourhood</span>
+    </div>
+    <div class="contact-item">
+      <img src="images/house.jpg" alt="Our house">
+      <span class="contact-caption">Our House</span>
+    </div>
+  </div>
+</section>
+
+<section class="final-image">
+  <img src="images/editorial-final.jpg" alt="MrDODO philosophy">
+</section>
+
+<div id="cookie-popup" class="cookie-popup">
+  <p>This website uses cookies to ensure you get the best experience.</p>
+  <button id="accept-cookies">Accept</button>
+  <button id="reject-cookies">Reject</button>
+</div>
+
+<footer class="site-footer section">
+  <p>&copy; 2025 MrDODO. All rights reserved.</p>
+  <p>
+    <a href="legal/aviso-legal.html">Legal Notice</a>
+    <a href="legal/politica-privacidad.html">Privacy Policy</a>
+    <a href="legal/politica-cookies.html">Cookie Policy</a>
+  </p>
+</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -140,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 300);
   }
 
-  // Abrir menú (Punto 1: Bloqueo de scroll)
+  // Abrir menú
   toggle.addEventListener('click', () => {
     nav.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -154,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
     enableScroll();
   });
 
-  // Cerrar al hacer clic en el velo
+  // Cerrar al hacer clic en el propio velo
   overlay.addEventListener('click', () => {
     nav.classList.remove('open');
     enableScroll();
@@ -182,15 +324,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const popup = document.getElementById('cookie-popup');
   const btnAccept = document.getElementById('accept-cookies');
   const btnReject = document.getElementById('reject-cookies');
-  if (popup && !localStorage.getItem('cookiesAccepted')) {
+  if (!localStorage.getItem('cookiesAccepted')) {
     popup.style.display = 'flex';
   }
-  if(btnAccept) {
-    btnAccept.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      popup.style.display = 'none';
-    });
-  }
+  btnAccept.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    popup.style.display = 'none';
+  });
+  btnReject.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
 });
 </script>
 
