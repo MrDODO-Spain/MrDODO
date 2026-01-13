@@ -7,68 +7,59 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. VELO (OVERLAY) */
+    /* 1. VELO OSCURO (Solo para móvil) */
     .menu-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1000;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
       display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .menu-overlay.active {
-      display: block;
-      opacity: 1;
     }
 
-    /* OCULTAR LA X EN DESKTOP */
+    /* 2. SOLUCIÓN PARA LA X EN DESKTOP */
     .close-menu {
-      display: none;
+      display: none !important; /* Oculta totalmente en ordenador */
     }
 
-    /* AJUSTES MÓVIL */
     @media (max-width: 768px) {
+      /* Re-activamos la X solo en móviles */
       .close-menu {
-        display: block; /* Solo se ve en móvil */
+        display: block !important;
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         background: none;
         border: none;
-        font-size: 45px !important;
-        line-height: 0.8 !important;
-        color: #1a1a1a;
-        cursor: pointer;
-        padding: 15px !important;
-        z-index: 1002;
-        transition: transform 0.1s ease, opacity 0.1s ease;
-        -webkit-tap-highlight-color: transparent;
+        font-size: 40px;
+        z-index: 1001;
+        padding: 10px;
       }
 
-      .close-menu:active {
-        transform: scale(0.9);
-        opacity: 0.7;
+      /* PUNTO 2: Área de clic ampliada solo en móvil */
+      .main-nav ul li a {
+        padding: 18px 20px !important;
+        display: block !important;
       }
 
-      .main-nav > ul > li > a {
-        padding: 18px 0 !important; 
-        display: flex;
-        align-items: center;
-        width: 100%;
-        transition: opacity 0.2s ease;
-      }
-      
-      .main-nav > ul > li > a:active {
+      /* PUNTO 3: Feedback visual al tocar */
+      .main-nav ul li a:active, .close-menu:active {
         opacity: 0.5;
+        transition: 0.1s;
       }
 
-      .menu-toggle:active {
-        opacity: 0.6;
+      /* Forzar apertura correcta */
+      .main-nav.open {
+        display: flex !important;
+        left: 0 !important;
       }
+    }
+
+    /* BLOQUEO DE SCROLL (PUNTO 1) */
+    body.no-scroll {
+      overflow: hidden !important;
     }
   </style>
 </head>
@@ -78,11 +69,12 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="#top" class="logo-link">
-      <img src="images/logo.svg" alt="MrDODO" class="logo" width="120" height="20">
+    <img src="images/logo.svg" alt="MrDODO" class="logo" width="120" height="20">
     </a>
 
     <nav class="main-nav">
       <button class="close-menu" aria-label="Cerrar">&times;</button>
+      
       <ul>
         <li class="has-submenu">
           <a href="#">Collection</a>
@@ -111,15 +103,20 @@
   </div>
 </header>
 
+<div class="menu-overlay"></div>
+
 <section class="hero">
   <div class="hero-image">
     <img src="images/hero-01.jpg" alt="MrDODO articulated object">
   </div>
-  <div class="hero-quote">
-    <span class="quote-text">Originality goes back to the simplicity<br>of the first solutions.</span>
-    <span class="quote-author">Antoni Gaudí</span>
-    <span class="quote-place">BARCELONA</span>
-  </div>
+<div class="hero-quote">
+  <span class="quote-text">
+    Originality goes back to the simplicity<br>
+    of the first solutions.
+  </span>
+  <span class="quote-author">Antoni Gaudí</span>
+  <span class="quote-place">BARCELONA</span>
+</div>
 </section>
 
 <section id="collection" class="section">
@@ -133,7 +130,6 @@
     <div class="animal"><img src="images/dynamics/dyn-05.jpg" alt="FLAMINGO"><div class="animal-name">FLAMINGO</div></div>
     <div class="animal"><img src="images/dynamics/dyn-06.jpg" alt="ANTEATER"><div class="animal-name">ANTEATER</div></div>
   </div>
-
   <h3 id="collection-minimini" class="subsection-title">MiniMini</h3>
   <div class="collection-minimini">
     <div class="animal"><img src="images/minimini/mini-01.jpg" alt="BISON"><div class="animal-name">BISON</div></div>
@@ -148,29 +144,27 @@
   <div class="overlay">
     <h2>A Family Business</h2>
     <p>Currently run by the third generation. Since 1914, our work has been driven by respect for wood, nature, and time.</p>
-    <blockquote>“We don’t know if a company has a soul, but we like to think it can.”</blockquote>
   </div>
 </section>
 
 <section id="craft" class="section bg craft">
   <div class="overlay">
     <h2>Craftsmanship & Design</h2>
-    <p>Behind every piece there lies vision, careful thought and skilled craftsmanship. Every object comes with a story.</p>
-    <blockquote>“Love of wood is something that all mankind has in common.”<br>— Hans Wegner</blockquote>
+    <p>Behind every piece there lies vision, careful thought and skilled craftsmanship.</p>
   </div>
 </section>
 
 <section id="eco" class="section bg eco">
   <div class="overlay">
     <h2>Eco & Sustainability</h2>
-    <p>True sustainability means durability. Our wood is sourced responsibly from sustainably managed European forests.</p>
+    <p>True sustainability means durability. Our wood is sourced responsibly.</p>
   </div>
 </section>
 
 <section id="maintenance" class="section bg maintenance">
   <div class="overlay">
     <h2>Maintenance</h2>
-    <p>Avoid direct sunlight and sudden humidity changes. Wood matures beautifully over time.</p>
+    <p>Avoid direct sunlight and sudden humidity changes.</p>
   </div>
 </section>
 
@@ -178,22 +172,12 @@
   <div class="divider"></div>
   <h2 class="section-title">Our Packaging</h2>
   <img src="images/packaging.jpg" alt="MrDODO packaging" class="full-image">
-  <p>Designed in Barcelona to accompany each creation with the same care it was made.</p>
 </section>
 
 <section id="contact" class="section contact">
   <div class="divider"></div>
   <h2 class="section-title">Contact</h2>
-  <p class="contact-text">MrDODO<br>C/. Aribau 95, 1º 3ª<br>08036 BARCELONA Spain<br>+34 626 08 52 21<br>felipecapdevila@gmail.com</p>
-  <div class="contact-images">
-    <div class="contact-item"><img src="images/city.jpg" alt="Our city"><span class="contact-caption">Our City</span></div>
-    <div class="contact-item"><img src="images/neighbourhood.jpg" alt="Our neighbourhood"><span class="contact-caption">Our Neighbourhood</span></div>
-    <div class="contact-item"><img src="images/house.jpg" alt="Our house"><span class="contact-caption">Our House</span></div>
-  </div>
-</section>
-
-<section class="final-image">
-  <img src="images/editorial-final.jpg" alt="MrDODO philosophy">
+  <p class="contact-text">MrDODO<br>C/. Aribau 95, 1º 3ª<br>08036 BARCELONA Spain</p>
 </section>
 
 <div id="cookie-popup" class="cookie-popup">
@@ -204,11 +188,6 @@
 
 <footer class="site-footer section">
   <p>&copy; 2025 MrDODO. All rights reserved.</p>
-  <p>
-    <a href="legal/aviso-legal.html">Legal Notice</a>
-    <a href="legal/politica-privacidad.html">Privacy Policy</a>
-    <a href="legal/politica-cookies.html">Cookie Policy</a>
-  </p>
 </footer>
 
 <script>
@@ -216,61 +195,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
   const closeBtn = document.querySelector('.close-menu');
-  const collectionBtn = document.querySelector('.has-submenu > a');
+  const collectionLink = document.querySelector('.has-submenu > a');
+  const overlay = document.querySelector('.menu-overlay');
 
-  const overlay = document.createElement('div');
-  overlay.className = 'menu-overlay';
-  document.body.appendChild(overlay);
-
-  function enableScroll() {
-    document.body.style.overflow = '';
-    overlay.classList.remove('active');
-    setTimeout(() => { 
-      if(!overlay.classList.contains('active')) overlay.style.display = 'none'; 
-    }, 300);
+  function openMenu() {
+    nav.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.classList.add('no-scroll');
   }
 
-  // ABRIR
-  toggle.addEventListener('click', function() {
-    nav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    overlay.style.display = 'block';
-    setTimeout(() => overlay.classList.add('active'), 10);
-  });
-
-  // CERRAR CON X
-  closeBtn.addEventListener('click', function() {
+  function closeMenu() {
     nav.classList.remove('open');
-    enableScroll();
-  });
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  }
 
-  // CERRAR CON VELO
-  overlay.addEventListener('click', function() {
-    nav.classList.remove('open');
-    enableScroll();
-  });
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
 
-  // SUBMENÚ
-  collectionBtn.addEventListener('click', function(e) {
+  // Manejo de Collection
+  collectionLink.addEventListener('click', function(e) {
     if (window.innerWidth <= 768) {
       e.preventDefault();
+      e.stopPropagation();
       this.parentElement.classList.toggle('active');
     }
   });
 
-  // CERRAR AL NAVEGAR
+  // Cerrar al clickar enlaces normales
   nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if(!link.parentElement.classList.contains('has-submenu')) {
-        if(window.innerWidth <= 768) {
-          nav.classList.remove('open');
-          enableScroll();
-        }
+    link.addEventListener('click', function() {
+      if(!this.parentElement.classList.contains('has-submenu')) {
+        if(window.innerWidth <= 768) closeMenu();
       }
     });
   });
 
-  // COOKIES
+  // Cookies
   const popup = document.getElementById('cookie-popup');
   const btnAccept = document.getElementById('accept-cookies');
   if (popup && !localStorage.getItem('cookiesAccepted')) {
