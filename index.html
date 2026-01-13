@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. VELO OSCURO */
+    /* 1. VELO OSCURO (Solo para móvil) */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -19,12 +19,13 @@
       display: none;
     }
 
-    /* 2. SOLUCIÓN PARA LA X */
+    /* 2. SOLUCIÓN PARA LA X EN DESKTOP */
     .close-menu {
-      display: none !important;
+      display: none !important; 
     }
 
     @media (max-width: 768px) {
+      /* Re-activamos la X solo en móviles */
       .close-menu {
         display: block !important;
         position: absolute;
@@ -37,22 +38,72 @@
         padding: 10px;
       }
 
+      /* Área de clic ampliada solo en móvil */
       .main-nav ul li a {
         padding: 18px 20px !important;
         display: block !important;
       }
 
+      /* Feedback visual al tocar */
       .main-nav ul li a:active, .close-menu:active {
         opacity: 0.5;
         transition: 0.1s;
       }
 
+      /* Apertura del menú móvil */
       .main-nav.open {
         display: flex !important;
         left: 0 !important;
       }
+
+      /* EXPERTO: CORRECCIÓN DEFINITIVA SECCIÓN CONTACTO MÓVIL */
+      section#contact.contact {
+        text-align: center !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .contact-text {
+        font-size: 1.1rem !important; 
+        line-height: 1.6 !important;
+        margin-bottom: 40px !important;
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .contact-images {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      .contact-item {
+        margin: 0 auto 40px auto !important;
+        width: 100% !important;
+        max-width: 320px !important; 
+      }
+
+      .contact-item picture img, 
+      .contact-item img {
+        display: block !important;
+        margin: 0 auto 15px auto !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .contact-caption {
+        display: block !important;
+        font-size: 1rem !important; 
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+      }
     }
 
+    /* BLOQUEO DE SCROLL */
     body.no-scroll {
       overflow: hidden !important;
     }
@@ -64,12 +115,11 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="#top" class="logo-link">
-    <img src="images/logo.svg" alt="MrDODO" class="logo" width="120" height="20">
+      <img src="images/logo.svg" alt="MrDODO" class="logo" width="120" height="20">
     </a>
 
     <nav class="main-nav">
       <button class="close-menu" aria-label="Cerrar">&times;</button>
-      
       <ul>
         <li class="has-submenu">
           <a href="#">Collection</a>
@@ -107,14 +157,11 @@
       <img src="images/hero-01.jpg" alt="MrDODO articulated object">
     </picture>
   </div>
-<div class="hero-quote">
-  <span class="quote-text">
-    Originality goes back to the simplicity<br>
-    of the first solutions.
-  </span>
-  <span class="quote-author">Antoni Gaudí</span>
-  <span class="quote-place">BARCELONA</span>
-</div>
+  <div class="hero-quote">
+    <span class="quote-text">Originality goes back to the simplicity<br>of the first solutions.</span>
+    <span class="quote-author">Antoni Gaudí</span>
+    <span class="quote-place">BARCELONA</span>
+  </div>
 </section>
 
 <section id="collection" class="section">
@@ -164,6 +211,7 @@
       <div class="animal-name">ANTEATER</div>
     </div>
   </div>
+
   <h3 id="collection-minimini" class="subsection-title">MiniMini</h3>
   <div class="collection-minimini">
     <div class="animal">
@@ -208,9 +256,7 @@
   <div class="overlay">
     <h2>A Family Business</h2>
     <p>Currently run by the third generation. Since 1914, our work has been driven by respect for wood, nature, and time.</p>
-    <blockquote>
-      “We don’t know if a company has a soul, but we like to think it can.”
-    </blockquote>
+    <blockquote>“We don’t know if a company has a soul, but we like to think it can.”</blockquote>
   </div>
 </section>
 
@@ -218,10 +264,7 @@
   <div class="overlay">
     <h2>Craftsmanship & Design</h2>
     <p>Behind every piece there lies vision, careful thought and skilled craftsmanship. Every object comes with a story.</p>
-    <blockquote>
-      “Love of wood is something that all mankind has in common.”<br>
-      — Hans Wegner
-    </blockquote>
+    <blockquote>“Love of wood is something that all mankind has in common.”<br>— Hans Wegner</blockquote>
   </div>
 </section>
 
