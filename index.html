@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. VELO OSCURO (Solo para móvil) */
+    /* 1. VELO OSCURO */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -19,7 +19,7 @@
       display: none;
     }
 
-    /* 2. SOLUCIÓN PARA LA X EN DESKTOP */
+    /* 2. SOLUCIÓN PARA LA X */
     .close-menu {
       display: none !important; 
     }
@@ -47,7 +47,7 @@
         left: 0 !important;
       }
 
-      /* SECCIÓN CONTACTO MÓVIL - PRIORIDAD MÁXIMA */
+      /* SECCIÓN CONTACTO MÓVIL */
       section#contact.contact {
         text-align: center !important;
         padding-left: 20px !important;
@@ -55,53 +55,37 @@
       }
 
       .contact-text {
-        font-size: 1.15rem !important; /* Tamaño aumentado para legibilidad premium */
+        font-size: 1.15rem !important; 
         line-height: 1.6 !important;
         margin-bottom: 40px !important;
         display: block !important;
-        width: 100% !important;
       }
 
       .contact-images {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        margin: 0 auto !important;
       }
 
       .contact-item {
         margin: 0 auto 40px auto !important;
-        width: 100% !important;
         max-width: 320px !important; 
       }
 
-      /* AJUSTE SOLICITADO: 75% de tamaño solo en vertical */
+      /* AJUSTE: 75% solo en vertical */
       @media (orientation: portrait) {
         .contact-item {
           width: 75% !important; 
         }
       }
 
-      .contact-item picture img, 
-      .contact-item img {
+      .contact-item picture img {
         display: block !important;
         margin: 0 auto 15px auto !important;
         width: 100% !important;
-        height: auto !important;
-      }
-
-      .contact-caption {
-        display: block !important;
-        font-size: 1rem !important; 
-        text-align: center !important;
-        width: 100% !important;
-        margin-top: 10px !important;
       }
     }
 
-    /* BLOQUEO DE SCROLL */
     body.no-scroll {
       overflow: hidden !important;
     }
@@ -135,9 +119,7 @@
     </nav>
 
     <button class="menu-toggle" aria-label="Open menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
 
     <div class="lang-switch">
@@ -167,45 +149,27 @@
   <h3 id="collection-dynamics" class="subsection-title">Dynamics</h3>
   <div class="collection-dynamics">
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-01.webp" type="image/webp">
-        <img src="images/dynamics/dyn-01.jpg" alt="DODO">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-01.webp" type="image/webp"><img src="images/dynamics/dyn-01.jpg" alt="DODO"></picture>
       <div class="animal-name">DODO</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-02.webp" type="image/webp">
-        <img src="images/dynamics/dyn-02.jpg" alt="PELIKAN">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-02.webp" type="image/webp"><img src="images/dynamics/dyn-02.jpg" alt="PELIKAN"></picture>
       <div class="animal-name">PELIKAN</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-03.webp" type="image/webp">
-        <img src="images/dynamics/dyn-03.jpg" alt="PAPAGAI">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-03.webp" type="image/webp"><img src="images/dynamics/dyn-03.jpg" alt="PAPAGAI"></picture>
       <div class="animal-name">PAPAGAI</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-04.webp" type="image/webp">
-        <img src="images/dynamics/dyn-04.jpg" alt="MONKEY">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-04.webp" type="image/webp"><img src="images/dynamics/dyn-04.jpg" alt="MONKEY"></picture>
       <div class="animal-name">MONKEY</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-05.webp" type="image/webp">
-        <img src="images/dynamics/dyn-05.jpg" alt="FLAMINGO">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-05.webp" type="image/webp"><img src="images/dynamics/dyn-05.jpg" alt="FLAMINGO"></picture>
       <div class="animal-name">FLAMINGO</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/dynamics/dyn-06.webp" type="image/webp">
-        <img src="images/dynamics/dyn-06.jpg" alt="ANTEATER">
-      </picture>
+      <picture><source srcset="images/dynamics/dyn-06.webp" type="image/webp"><img src="images/dynamics/dyn-06.jpg" alt="ANTEATER"></picture>
       <div class="animal-name">ANTEATER</div>
     </div>
   </div>
@@ -213,38 +177,23 @@
   <h3 id="collection-minimini" class="subsection-title">MiniMini</h3>
   <div class="collection-minimini">
     <div class="animal">
-      <picture>
-        <source srcset="images/minimini/mini-01.webp" type="image/webp">
-        <img src="images/minimini/mini-01.jpg" alt="BISON">
-      </picture>
+      <picture><source srcset="images/minimini/mini-01.webp" type="image/webp"><img src="images/minimini/mini-01.jpg" alt="BISON"></picture>
       <div class="animal-name">BISON</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/minimini/mini-02.webp" type="image/webp">
-        <img src="images/minimini/mini-02.jpg" alt="MOOSE">
-      </picture>
+      <picture><source srcset="images/minimini/mini-02.webp" type="image/webp"><img src="images/minimini/mini-02.jpg" alt="MOOSE"></picture>
       <div class="animal-name">MOOSE</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/minimini/mini-03.webp" type="image/webp">
-        <img src="images/minimini/mini-03.jpg" alt="DOG">
-      </picture>
+      <picture><source srcset="images/minimini/mini-03.webp" type="image/webp"><img src="images/minimini/mini-03.jpg" alt="DOG"></picture>
       <div class="animal-name">DOG</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/minimini/mini-04.webp" type="image/webp">
-        <img src="images/minimini/mini-04.jpg" alt="GOAT&SHEEP">
-      </picture>
+      <picture><source srcset="images/minimini/mini-04.webp" type="image/webp"><img src="images/minimini/mini-04.jpg" alt="GOAT&SHEEP"></picture>
       <div class="animal-name">GOAT&SHEEP</div>
     </div>
     <div class="animal">
-      <picture>
-        <source srcset="images/minimini/mini-05.webp" type="image/webp">
-        <img src="images/minimini/mini-05.jpg" alt="WALRUS">
-      </picture>
+      <picture><source srcset="images/minimini/mini-05.webp" type="image/webp"><img src="images/minimini/mini-05.jpg" alt="WALRUS"></picture>
       <div class="animal-name">WALRUS</div>
     </div>
   </div>
@@ -302,24 +251,15 @@
   </p>
   <div class="contact-images">
     <div class="contact-item">
-      <picture>
-        <source srcset="images/city.webp" type="image/webp">
-        <img src="images/city.jpg" alt="Our city">
-      </picture>
+      <picture><source srcset="images/city.webp" type="image/webp"><img src="images/city.jpg" alt="Our city"></picture>
       <span class="contact-caption">Our City</span>
     </div>
     <div class="contact-item">
-      <picture>
-        <source srcset="images/neighbourhood.webp" type="image/webp">
-        <img src="images/neighbourhood.jpg" alt="Our neighbourhood">
-      </picture>
+      <picture><source srcset="images/neighbourhood.webp" type="image/webp"><img src="images/neighbourhood.jpg" alt="Our neighbourhood"></picture>
       <span class="contact-caption">Our Neighbourhood</span>
     </div>
     <div class="contact-item">
-      <picture>
-        <source srcset="images/house.webp" type="image/webp">
-        <img src="images/house.jpg" alt="Our house">
-      </picture>
+      <picture><source srcset="images/house.webp" type="image/webp"><img src="images/house.jpg" alt="Our house"></picture>
       <span class="contact-caption">Our House</span>
     </div>
   </div>
@@ -332,5 +272,74 @@
   </picture>
 </section>
 
+<footer class="site-footer section">
+  <p>&copy; 2025 MrDODO. All rights reserved.</p>
+  <p>
+    <a href="legal/aviso-legal.html">Legal Notice</a>
+    <a href="legal/politica-privacidad.html">Privacy Policy</a>
+    <a href="legal/politica-cookies.html">Cookie Policy</a>
+  </p>
+</footer>
+
 <div id="cookie-popup" class="cookie-popup">
-  <p>This website uses cookies to ensure you get the best
+  <p>This website uses cookies to ensure you get the best experience.</p>
+  <button id="accept-cookies">Accept</button>
+  <button id="reject-cookies">Reject</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  const closeBtn = document.querySelector('.close-menu');
+  const collectionLink = document.querySelector('.has-submenu > a');
+  const overlay = document.querySelector('.menu-overlay');
+
+  function openMenu() {
+    nav.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  }
+
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  collectionLink.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      if(!this.parentElement.classList.contains('has-submenu')) {
+        if(window.innerWidth <= 768) closeMenu();
+      }
+    });
+  });
+
+  const popup = document.getElementById('cookie-popup');
+  const btnAccept = document.getElementById('accept-cookies');
+  if (popup && !localStorage.getItem('cookiesAccepted')) {
+    popup.style.display = 'flex';
+  }
+  if(btnAccept) {
+    btnAccept.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      popup.style.display = 'none';
+    });
+  }
+});
+</script>
+
+</body>
+</html>
