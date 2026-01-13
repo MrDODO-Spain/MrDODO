@@ -234,18 +234,31 @@
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
+  // Localizamos el enlace de Collection
+  const collectionBtn = document.querySelector('.has-submenu > a');
 
   toggle.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
 
+  // Nueva lógica: Abrir submenú al tocar "Collection" en móvil
+  collectionBtn.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+
   nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if(window.innerWidth <= 768) nav.classList.remove('open');
+    link.addEventListener('click', (e) => {
+      // Si no es el botón de Collection, cerramos el menú al hacer clic
+      if(!link.parentElement.classList.contains('has-submenu')) {
+        if(window.innerWidth <= 768) nav.classList.remove('open');
+      }
     });
   });
 
-  // Cookie popup
+  // (Mantenemos tu lógica de cookies intacta debajo...)
   const popup = document.getElementById('cookie-popup');
   const btnAccept = document.getElementById('accept-cookies');
   const btnReject = document.getElementById('reject-cookies');
@@ -257,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
     popup.style.display = 'none';
   });
   btnReject.addEventListener('click', () => {
-    window.close();
+    popup.style.display = 'none';
   });
 });
 </script>
