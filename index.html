@@ -5,46 +5,6 @@
   <title>MrDODO — Crafted Wooden Objects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    /* Estilos para el velo (overlay) */
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .menu-overlay.active {
-      display: block;
-      opacity: 1;
-    }
-
-    /* MEJORA PUNTO 2: Usabilidad táctil en móvil */
-    @media (max-width: 768px) {
-      .main-nav > ul > li > a {
-        padding: 18px 0 !important; /* Aumentamos el área de clic vertical */
-        display: flex;
-        align-items: center;
-        width: 100%;
-      }
-      
-      .close-menu {
-        padding: 15px; /* X más fácil de tocar */
-        font-size: 45px;
-      }
-
-      /* Ajuste para que el submenú también sea fácil de tocar */
-      .has-submenu .submenu li a {
-        padding: 12px 0 12px 20px !important;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -266,40 +226,17 @@
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
-  const closeBtn = document.querySelector('.close-menu');
+  const closeBtn = document.querySelector('.close-menu'); // CAMBIO 2A: Detectamos el botón X
   const collectionBtn = document.querySelector('.has-submenu > a');
 
-  // CREAMOS EL VELO DINÁMICAMENTE
-  const overlay = document.createElement('div');
-  overlay.className = 'menu-overlay';
-  document.body.appendChild(overlay);
-
-  function enableScroll() {
-    document.body.style.overflow = '';
-    overlay.classList.remove('active');
-    setTimeout(() => { 
-      if(!overlay.classList.contains('active')) overlay.style.display = 'none'; 
-    }, 300);
-  }
-
-  // Abrir menú
+  // Abrir al dar a la hamburguesa
   toggle.addEventListener('click', () => {
     nav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    overlay.style.display = 'block';
-    setTimeout(() => overlay.classList.add('active'), 10);
   });
 
-  // Cerrar con la X
+  // CAMBIO 2B: Orden de CERRAR al dar a la X
   closeBtn.addEventListener('click', () => {
     nav.classList.remove('open');
-    enableScroll();
-  });
-
-  // Cerrar al hacer clic en el propio velo
-  overlay.addEventListener('click', () => {
-    nav.classList.remove('open');
-    enableScroll();
   });
 
   collectionBtn.addEventListener('click', function(e) {
@@ -312,15 +249,12 @@ document.addEventListener('DOMContentLoaded', function () {
   nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {
       if(!link.parentElement.classList.contains('has-submenu')) {
-        if(window.innerWidth <= 768) {
-          nav.classList.remove('open');
-          enableScroll();
-        }
+        if(window.innerWidth <= 768) nav.classList.remove('open');
       }
     });
   });
 
-  // Cookies
+  // Cookies (Tu lógica original intacta)
   const popup = document.getElementById('cookie-popup');
   const btnAccept = document.getElementById('accept-cookies');
   const btnReject = document.getElementById('reject-cookies');
