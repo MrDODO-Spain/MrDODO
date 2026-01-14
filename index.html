@@ -81,22 +81,23 @@
         }
       }
 
+      /* AJUSTE DE DISTANCIA IMAGEN: Reducido margen inferior para acercar el texto */
       .contact-item picture img {
         display: block !important;
-        margin: 0 auto 15px auto !important;
+        margin: 0 auto 5px auto !important; /* Antes era 15px */
         width: 100% !important;
         height: auto !important;
       }
 
-      /* SUBTÍTULOS FOTOS (Estilo elegante "Packaging") */
+      /* SUBTÍTULOS FOTOS: Más grandes, pegados a la foto y solo 'O' mayúscula */
       .contact-caption {
         display: block !important;
-        font-size: 1rem !important; 
+        font-size: 1.15rem !important; /* Aumentado de 1rem a 1.15rem */
         font-weight: 300 !important; 
         letter-spacing: 0.05em !important; 
         text-transform: none !important; 
         text-align: center !important;
-        margin-top: 15px !important;
+        margin-top: 5px !important; /* Reducido de 15px a 5px para juntarlo */
         color: #666 !important;
       }
     }
@@ -268,15 +269,15 @@
   <div class="contact-images">
     <div class="contact-item">
       <picture><source srcset="images/city.webp" type="image/webp"><img src="images/city.jpg" alt="Our city"></picture>
-      <span class="contact-caption">Our City</span>
+      <span class="contact-caption">Our city</span>
     </div>
     <div class="contact-item">
       <picture><source srcset="images/neighbourhood.webp" type="image/webp"><img src="images/neighbourhood.jpg" alt="Our neighbourhood"></picture>
-      <span class="contact-caption">Our Neighbourhood</span>
+      <span class="contact-caption">Our neighbourhood</span>
     </div>
     <div class="contact-item">
       <picture><source srcset="images/house.webp" type="image/webp"><img src="images/house.jpg" alt="Our house"></picture>
-      <span class="contact-caption">Our House</span>
+      <span class="contact-caption">Our house</span>
     </div>
   </div>
 </section>
