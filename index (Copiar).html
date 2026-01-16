@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MrDODO — Crafted Wooden Objects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* 1. VELO OSCURO (Solo para móvil) */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+      display: none;
+    }
+
+    /* 2. SOLUCIÓN PARA LA X EN DESKTOP */
+    .close-menu {
+      display: none !important; 
+    }
+
+    @media (max-width: 768px) {
+      /* Re-activamos la X solo en móviles */
+      .close-menu {
+        display: block !important;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 40px;
+        z-index: 1001;
+        padding: 10px;
+      }
+
+      /* Área de clic ampliada solo en móvil */
+      .main-nav ul li a {
+        padding: 18px 20px !important;
+        display: block !important;
+      }
+
+      /* Feedback visual al tocar */
+      .main-nav ul li a:active, .close-menu:active {
+        opacity: 0.5;
+        transition: 0.1s;
+      }
+
+      /* Apertura del menú móvil */
+      .main-nav.open {
+        display: flex !important;
+        left: 0 !important;
+      }
+
+      /* EXPERTO: CORRECCIÓN DEFINITIVA SECCIÓN CONTACTO MÓVIL */
+      section#contact.contact {
+        text-align: center !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .contact-text {
+        font-size: 1.1rem !important; 
+        line-height: 1.6 !important;
+        margin-bottom: 40px !important;
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .contact-images {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      .contact-item {
+        margin: 0 auto 40px auto !important;
+        width: 100% !important;
+        max-width: 320px !important; 
+      }
+
+      .contact-item picture img, 
+      .contact-item img {
+        display: block !important;
+        margin: 0 auto 15px auto !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .contact-caption {
+        display: block !important;
+        font-size: 1rem !important; 
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+      }
+    }
+
+    /* BLOQUEO DE SCROLL */
+    body.no-scroll {
+      overflow: hidden !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="logo-link">
+      <img src="images/logo.svg" alt="MrDODO" class="logo" width="120" height="20">
+    </a>
+
+    <nav class="main-nav">
+      <button class="close-menu" aria-label="Cerrar">&times;</button>
+      <ul>
+        <li class="has-submenu">
+          <a href="#">Collection</a>
+          <ul class="submenu">
+            <li><a href="#collection-dynamics">Dynamics</a></li>
+            <li><a href="#collection-minimini">MiniMini</a></li>
+          </ul>
+        </li>
+        <li><a href="#heritage">Heritage</a></li>
+        <li><a href="#craft">Craft</a></li>
+        <li><a href="#eco">Sustainability</a></li>
+        <li><a href="#maintenance">Maintenance</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="lang-switch">
+      <span class="active">EN</span> / <a href="index-es.html">ES</a>
+    </div>
+  </div>
+</header>
+
+<div class="menu-overlay"></div>
+
+<section class="hero">
+  <div class="hero-image">
+    <picture>
+      <source srcset="images/hero-01.webp" type="image/webp">
+      <img src="images/hero-01.jpg" alt="MrDODO articulated object">
+    </picture>
+  </div>
+  <div class="hero-quote">
+    <span class="quote-text">Originality goes back to the simplicity<br>of the first solutions.</span>
+    <span class="quote-author">Antoni Gaudí</span>
+    <span class="quote-place">BARCELONA</span>
+  </div>
+</section>
+
+<section id="collection" class="section">
+  <h2 class="section-title">The Collection</h2>
+  <h3 id="collection-dynamics" class="subsection-title">Dynamics</h3>
+  <div class="collection-dynamics">
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-01.webp" type="image/webp">
+        <img src="images/dynamics/dyn-01.jpg" alt="DODO">
+      </picture>
+      <div class="animal-name">DODO</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-02.webp" type="image/webp">
+        <img src="images/dynamics/dyn-02.jpg" alt="PELIKAN">
+      </picture>
+      <div class="animal-name">PELIKAN</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-03.webp" type="image/webp">
+        <img src="images/dynamics/dyn-03.jpg" alt="PAPAGAI">
+      </picture>
+      <div class="animal-name">PAPAGAI</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-04.webp" type="image/webp">
+        <img src="images/dynamics/dyn-04.jpg" alt="MONKEY">
+      </picture>
+      <div class="animal-name">MONKEY</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-05.webp" type="image/webp">
+        <img src="images/dynamics/dyn-05.jpg" alt="FLAMINGO">
+      </picture>
+      <div class="animal-name">FLAMINGO</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/dynamics/dyn-06.webp" type="image/webp">
+        <img src="images/dynamics/dyn-06.jpg" alt="ANTEATER">
+      </picture>
+      <div class="animal-name">ANTEATER</div>
+    </div>
+  </div>
+
+  <h3 id="collection-minimini" class="subsection-title">MiniMini</h3>
+  <div class="collection-minimini">
+    <div class="animal">
+      <picture>
+        <source srcset="images/minimini/mini-01.webp" type="image/webp">
+        <img src="images/minimini/mini-01.jpg" alt="BISON">
+      </picture>
+      <div class="animal-name">BISON</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/minimini/mini-02.webp" type="image/webp">
+        <img src="images/minimini/mini-02.jpg" alt="MOOSE">
+      </picture>
+      <div class="animal-name">MOOSE</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/minimini/mini-03.webp" type="image/webp">
+        <img src="images/minimini/mini-03.jpg" alt="DOG">
+      </picture>
+      <div class="animal-name">DOG</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/minimini/mini-04.webp" type="image/webp">
+        <img src="images/minimini/mini-04.jpg" alt="GOAT&SHEEP">
+      </picture>
+      <div class="animal-name">GOAT&SHEEP</div>
+    </div>
+    <div class="animal">
+      <picture>
+        <source srcset="images/minimini/mini-05.webp" type="image/webp">
+        <img src="images/minimini/mini-05.jpg" alt="WALRUS">
+      </picture>
+      <div class="animal-name">WALRUS</div>
+    </div>
+  </div>
+</section>
+
+<section id="heritage" class="section bg heritage">
+  <div class="overlay">
+    <h2>A Family Business</h2>
+    <p>Currently run by the third generation. Since 1914, our work has been driven by respect for wood, nature, and time.</p>
+    <blockquote>“We don’t know if a company has a soul, but we like to think it can.”</blockquote>
+  </div>
+</section>
+
+<section id="craft" class="section bg craft">
+  <div class="overlay">
+    <h2>Craftsmanship & Design</h2>
+    <p>Behind every piece there lies vision, careful thought and skilled craftsmanship. Every object comes with a story.</p>
+    <blockquote>“Love of wood is something that all mankind has in common.”<br>— Hans Wegner</blockquote>
+  </div>
+</section>
+
+<section id="eco" class="section bg eco">
+  <div class="overlay">
+    <h2>Eco & Sustainability</h2>
+    <p>True sustainability means durability. Our wood is sourced responsibly from sustainably managed European forests.</p>
+  </div>
+</section>
+
+<section id="maintenance" class="section bg maintenance">
+  <div class="overlay">
+    <h2>Maintenance</h2>
+    <p>Avoid direct sunlight and sudden humidity changes. Wood matures beautifully over time.</p>
+  </div>
+</section>
+
+<section class="section packaging">
+  <div class="divider"></div>
+  <h2 class="section-title">Our Packaging</h2>
+  <picture>
+    <source srcset="images/packaging.webp" type="image/webp">
+    <img src="images/packaging.jpg" alt="MrDODO packaging" class="full-image">
+  </picture>
+  <p>Designed in Barcelona to accompany each creation with the same care it was made.</p>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="divider"></div>
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-text">
+    MrDODO<br>
+    C/. Aribau 95, 1º 3ª<br>
+    08036 BARCELONA Spain<br>
+    +34 626 08 52 21<br>
+    felipecapdevila@gmail.com
+  </p>
+  <div class="contact-images">
+    <div class="contact-item">
+      <picture>
+        <source srcset="images/city.webp" type="image/webp">
+        <img src="images/city.jpg" alt="Our city">
+      </picture>
+      <span class="contact-caption">Our City</span>
+    </div>
+    <div class="contact-item">
+      <picture>
+        <source srcset="images/neighbourhood.webp" type="image/webp">
+        <img src="images/neighbourhood.jpg" alt="Our neighbourhood">
+      </picture>
+      <span class="contact-caption">Our Neighbourhood</span>
+    </div>
+    <div class="contact-item">
+      <picture>
+        <source srcset="images/house.webp" type="image/webp">
+        <img src="images/house.jpg" alt="Our house">
+      </picture>
+      <span class="contact-caption">Our House</span>
+    </div>
+  </div>
+</section>
+
+<section class="final-image">
+  <picture>
+    <source srcset="images/editorial-final.webp" type="image/webp">
+    <img src="images/editorial-final.jpg" alt="MrDODO philosophy">
+  </picture>
+</section>
+
+<div id="cookie-popup" class="cookie-popup">
+  <p>This website uses cookies to ensure you get the best experience.</p>
+  <button id="accept-cookies">Accept</button>
+  <button id="reject-cookies">Reject</button>
+</div>
+
+<footer class="site-footer section">
+  <p>&copy; 2025 MrDODO. All rights reserved.</p>
+  <p>
+    <a href="legal/aviso-legal.html">Legal Notice</a>
+    <a href="legal/politica-privacidad.html">Privacy Policy</a>
+    <a href="legal/politica-cookies.html">Cookie Policy</a>
+  </p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  const closeBtn = document.querySelector('.close-menu');
+  const collectionLink = document.querySelector('.has-submenu > a');
+  const overlay = document.querySelector('.menu-overlay');
+
+  function openMenu() {
+    nav.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+  }
+
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  collectionLink.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      if(!this.parentElement.classList.contains('has-submenu')) {
+        if(window.innerWidth <= 768) closeMenu();
+      }
+    });
+  });
+
+  const popup = document.getElementById('cookie-popup');
+  const btnAccept = document.getElementById('accept-cookies');
+  if (popup && !localStorage.getItem('cookiesAccepted')) {
+    popup.style.display = 'flex';
+  }
+  if(btnAccept) {
+    btnAccept.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      popup.style.display = 'none';
+    });
+  }
+});
+</script>
+
+</body>
+</html>
