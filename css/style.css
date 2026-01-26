@@ -967,3 +967,91 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 .site-header.scrolled .header-inner {
   padding: 0 60px 0 30px !important;
 }
+/* ============================================================
+   ESTILO EDITORIAL PREMIUM (MRDODO LUXURY LAYER)
+   ============================================================ */
+
+@media (min-width: 769px) {
+  
+  /* 1. CEJAS DE MARCA (Brand Eyebrows) */
+  .brand-eyebrow, .overlay-eyebrow {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: 400;
+  }
+
+  /* 2. INTRODUCCIÓN DE COLECCIÓN */
+  .collection-intro {
+    text-align: center;
+    margin-bottom: 80px;
+    margin-top: 40px;
+  }
+  
+  .collection-intro .section-title {
+    margin-bottom: 0;
+    font-size: 42px; /* Un poco más de autoridad */
+  }
+
+  /* 3. FIRMA EDITORIAL (En Heritage y Craft) */
+  .overlay .signature {
+    border-top: 1px solid #d1d1d1 !important;
+    margin-top: 30px !important;
+    padding-top: 25px !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px !important;
+    color: #1a1a1a !important;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* 4. CONTACTO REFINADO */
+  .contact-info {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .contact-location {
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+
+  .contact-address, .contact-email {
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+
+  /* 5. ANIMACIÓN SUTIL AL CARGAR LA PÁGINA */
+  .hero-text-overlay h1 {
+    animation: luxuryFadeIn 2s ease-out;
+  }
+}
+
+@keyframes luxuryFadeIn {
+  from { opacity: 0; transform: translateY(15px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Ajuste sutil para el efecto de zoom en la portada */
+.hero { overflow: hidden; }
+.hero-image img {
+  transition: transform 15s ease-out !important;
+}
+.hero:hover .hero-image img {
+  transform: scale(1.08);
+}
+.contact-phone {
+  font-size: 13px;
+  color: #999; /* Un gris más claro para que sea secundario */
+  letter-spacing: 1px;
+  margin-top: 10px;
+  font-weight: 300;
+}
