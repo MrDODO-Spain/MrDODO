@@ -1,113 +1,204 @@
 /* =========================
-   RESET
+   RESET & FUENTE EXTERNA
    ========================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-
-/* =========================
-   BASE
-   ========================= */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
-  background-color: #f7f6f2;
-  color: #1a1a1a;
-  line-height: 1.65;
-  font-weight: 300;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap');
+html {
+  scroll-behavior: smooth;
 }
 
-:root { --header-height: 88px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: #f7f6f2;
+  color: #1a1a1a;
+  line-height: 1.6;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 /* =========================
-   HEADER
+   HEADER & NAV
    ========================= */
 .site-header {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:var(--header-height);
-  background:#fff;
-  border-bottom:1px solid #e5e5e5;
-  z-index:1000;
+  top: 0; left: 0; width: 100%;
+  height: 90px;
+  background: transparent;
+  z-index: 1000;
+  transition: all 0.4s ease;
 }
 
-/* --- AJUSTE POSICIÓN LOGO: 1CM A LA DERECHA --- */
 .header-inner {
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: center; 
   justify-content: space-between;
-  /* Aumentamos el padding izquierdo de 22px a 60px */
-  padding: 0 60px 0 60px !important; 
-  position: relative;
-  transition: padding 0.4s ease;
-}
-
-/* Mantenemos la consistencia al hacer scroll */
-.site-header.scrolled .header-inner {
-  padding: 0 60px 0 60px !important;
+  padding: 0 60px 20px 30px; /* Ese '15px' es el que empuja el logo hacia arriba */
 }
 
 .logo { 
-  height: 20px;               /* Un poco más pequeño para dar aire */
-  width: auto;
-  opacity: 0.95;              /* Suaviza el impacto visual */
-  filter: drop-shadow(0 0 0.2px rgba(0,0,0,0.1)); /* Truco para extra nitidez */
-  transition: transform 0.3s ease;
+  height: 22px; 
+  filter: brightness(0) invert(1); 
+  transition: 0.4s;
+}
+/* Ocultar botón de cierre en escritorio */
+.close-menu {
+  display: none;
 }
 
 /* =========================
-   MAIN NAV DESKTOP
+   NAVEGACIÓN PRINCIPAL
    ========================= */
+.main-nav {
+  position: absolute;
+  left: 50%;
+  top: 50%; /* <--- Cambia 20px por 50% */
+  transform: translate(-50%, -50%); /* <--- Cambia translateX por translate(-50%, -50%) */
+}
+
 .main-nav ul {
-  list-style:none;
-  display:flex;
-  align-items:center;
-  gap:16px;
+  list-style: none;
+  display: flex;
+  gap: 12px; 
 }
 
 .main-nav a {
-  text-decoration:none;
-  color:#1a1a1a;
-  font-size:13px;
-  letter-spacing:0.4px;
+  text-decoration: none;
+  color: #fdfcf9;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  display: inline-block; 
+  text-align: left;
 }
 
-.main-nav a:hover { opacity:0.6; }
+/* Subrayado CENTRADO solo para el menú de arriba */
+.main-nav > ul > li > a::after {
+  content: '';
+  position: absolute;
+  width: 0; height: 1px;
+  bottom: 0px; left: 0;
+  background-color: currentColor;
+  transition: 0.3s;
+  transform: none;
+}
+.main-nav > ul > li > a:hover::after { width: 100%; }
 
-/* Submenu Desktop */
-.has-submenu { position: relative; }
+/* =========================
+   SUBMENÚ (Dynamics / Minimini)
+   ========================= */
 .has-submenu .submenu {
   display: none;
   position: absolute;
-  top:100%;
-  left:0;
-  background: #fff;
-  margin-top:0;
-  padding:8px 0;
-  min-width: 0; 
-  width: max-content; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Opcional: añade sutileza */
+  top: 100%; left: 0;
+  padding: 5px 0;
+  list-style: none;
+  text-align: left;
 }
-.has-submenu:hover .submenu,
-.has-submenu .submenu:hover {
-  display:block;
-}
-.has-submenu .submenu li a {
-  display: block;
-  padding: 8px 15px; /* Ajusta el aire interno del texto */
+
+.has-submenu:hover .submenu { display: flex; flex-direction: column; }
+
+.has-submenu .submenu a {
+  color: #fdfcf9;
   font-size: 13px;
-  color: #1a1a1a;
-  white-space: nowrap;
+  font-weight: 300;
+  padding: 2px 0;
+  display: inline-block;
+  position: relative;
+  transform: none; /* Evita que se mueva a la izquierda */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-/* Scroll margin para subsecciones */
-#collection-dynamics { scroll-margin-top: calc(var(--header-height) + 20px); }
-#collection-minimini { scroll-margin-top: calc(var(--header-height) + 20px); }
-#maintenance { scroll-margin-top: calc(var(--header-height) + 20px); }
+/* Subrayado alineado a la IZQUIERDA para el submenú */
+.has-submenu .submenu a::after {
+  content: '';
+  position: absolute;
+  width: 0; height: 1px;
+  bottom: 2px; left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+  transform: none; 
+}
+.has-submenu .submenu a:hover::after { width: 100%; }
 
-/* LANG SWITCH */
-.lang-switch { font-size:12px; letter-spacing:0.5px; }
-.lang-switch .active { font-weight:500; }
+/* ===================================================
+   PUNTO 3: ESTADO SCROLL (CORRECCIÓN DEFINITIVA)
+   =================================================== */
+
+/* 3.1. El contenedor del Header: Se vuelve blanco y más bajo */
+.site-header.scrolled {
+  background: #ffffff;
+  height: 70px;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* 3.2. El Logo: Deja de ser blanco y vuelve a su color original (negro) */
+.site-header.scrolled .logo { 
+  filter: none; 
+}
+
+/* 3.3. Textos y Enlaces: Cambiamos a negro y eliminamos sombras para máxima nitidez */
+.site-header.scrolled .main-nav a,
+.site-header.scrolled .has-submenu .submenu a,
+.site-header.scrolled .lang-switch a {
+  color: #1a1a1a;
+  text-shadow: none;
+}
+
+/* 3.4. Selector de Idiomas: Ajuste del subrayado activo a negro */
+.site-header.scrolled .lang-switch a.active::after {
+  background-color: #1a1a1a;
+}
+
+/* 3.5. Alineación Vertical: Reseteamos los márgenes de portada para centrar todo en 70px */
+.site-header.scrolled .header-inner {
+  padding-bottom: 0; 
+  align-items: center;
+}
+
+/* 3.6. El Menú: Cambia su posición 'top' fija de la portada por un centrado vertical */
+.site-header.scrolled .main-nav {
+  top: 50%;
+  transform: translate(-50%, -50%); 
+}
+/* =========================
+   SELECTOR DE IDIOMAS
+   ========================= */
+.lang-switch { display: flex; gap: 12px; }
+
+.lang-switch a {
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fdfcf9; 
+  font-weight: 300; 
+  opacity: 0.8; /* Subimos la opacidad del no activo del 0.6 al 0.8 */
+  position: relative;
+  padding-bottom: 5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.lang-switch a.active {
+  opacity: 1;
+  font-weight: 500; /* El activo un poco más sólido */
+}
+
+.lang-switch a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background-color: currentColor;
+}
+
+
 
 /* =========================
    MENU TOGGLE (HAMBURGUESA)
@@ -136,184 +227,216 @@ body {
 /* =========================
    HERO
    ========================= */
-.hero { position:relative; margin-top:88px; }
-.hero img { width:100%; display:block; }
-.hero-quote {
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 0; /* Empieza desde arriba del todo */
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-text-overlay {
   position: absolute;
-  top: 206px;
-  left: 60px;
-  max-width: 420px;
-  color: #edece6; 
-}
-.quote-text {
-  display: block;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 300;
-  letter-spacing: 0.3px;
-  margin-bottom: 26px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  /* Subimos del 10% al 14% para ese cm extra hacia arriba */
+  bottom: 14%; 
+  /* Mantenemos el margen que ya aplicaste para la izquierda */
+  right: 110px; 
+  text-align: right;
+  color: #ffffff;
+  z-index: 2;
+  animation: luxuryFadeIn 2s ease-out forwards;
 }
 
-.quote-author {
-  display: block;
-  font-size: 14px;
+.hero-text-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  line-height: 1.0;
   font-weight: 400;
-  letter-spacing: 0.6px;
-  opacity: 0.9;
-  margin-bottom: 2px;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  animation: luxuryFadeIn 2s ease-out forwards;
 }
 
-.quote-place {
+.hero-tagline {
+  display: none; /* <--- Esto suspende la visualización sin borrar el texto */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  letter-spacing: 7px; /* Mucho espacio como en la referencia */
+  text-transform: uppercase;
+  opacity: 0.8;
+  animation: luxuryFadeIn 2s ease-out forwards;
+  animation-delay: 0.5s; /* Tarda medio segundo más en aparecer */
+  opacity: 0; /* Para que no se vea antes de empezar la animación */
+}
+.hero-text-overlay h1, 
+.hero-tagline {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+/* =========================
+   ANIMACIÓN ZOOM PORTADA
+   ========================= */
+
+/* 1. Contenedor del Hero: Aseguramos que la foto no se salga de los bordes al crecer */
+.hero {
+  overflow: hidden; 
+  position: relative;
+}
+
+/* 2. La imagen: Aplicamos la animación */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  font-size: 11px;
-  letter-spacing: 1.6px;
-  opacity: 0.7;
+  
+  /* Nombre de la animación | Duración | Modo (suave) | Infinito (o solo una vez) */
+  animation: slowZoom 12s ease-out forwards;
 }
 
+/* 3. Definición de los pasos del Zoom */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1); /* Tamaño original */
+  }
+  100% {
+    transform: scale(1.1); /* Crece un 10% */
+  }
+}
 /* =========================
    SECTIONS
    ========================= */
-.section { padding:60px 10%; }
-.section-title { font-size:32px; margin-bottom:32px; }
+.section { 
+  padding: 80px 5%; 
+  text-align: center;
+}
+
+/* Reglas específicas para que el menú no tape los títulos al saltar */
+#collection-dynamics, 
+#collection-minimini {
+  scroll-margin-top: 130px; /* Espacio extra para que se vea The Collection y Dynamics */
+}
+.section-title { 
+  font-size: 32px; 
+  margin-bottom: 5px;    /* Pegamos el título principal al de abajo */
+  display: inline-block;
+}
 .subsection-title {
-  margin-top: 60px;
-  margin-bottom: 48px;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
+  text-align: center;
+  margin-top: 15px;      /* Espacio reducido para que parezcan un solo bloque */
+  margin-bottom: 60px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
-.section-title + .subsection-title {
+.section-title + .subsection-title { margin-top: 40px; }
+
+/* =========================
+   COLLECTION / ANIMALS
+   ========================= */
+   .brand-eyebrow {
+  display: none; /* Esto oculta la palabra Portfolio sin borrarla del HTML */
+}
+/* Unificamos el control de todas las galerías para que sean elegantes */
+.collection-dynamics,
+.collection-minimini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px; /* Espacio generoso para que cada animal sea protagonista */
+  margin: 60px 0;
+}
+
+.animal { 
+  width: 100%;         /* El contenedor del animal se expande al máximo */
+  max-width: none;     /* Eliminamos cualquier tope anterior */
+  margin-bottom: 80px; /* Espacio generoso entre piezas (aire editorial) */
+  text-align: center;
+}
+.contact-images {
+  display: grid;
+  /* Subimos el mínimo a 250px para que las fotos tengan presencia y no sean diminutas */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 40px;
   margin-top: 40px;
+  margin-bottom: 60px;
+  /* EL TRUCO: max-width evita que las fotos se estiren al infinito en monitores grandes */
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Imagen protagonista */
+.animal img { 
+  width: 100%;       /* Ocupa todo el ancho disponible (90% de la pantalla) */
+  height: auto;      /* Mantiene la proporción ORIGINAL sin recortar nada */
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.6s ease;
+}
+
+/* Efecto premium al pasar el ratón */
+.animal:hover img {
+  transform: scale(1.02); /* Un movimiento muy sutil de lente */
+}
+
+.animal-name {
+  margin-top: 15px;
+  font-size: 17px;       /* Más pequeño y elegante */
+  font-weight: 300;
+  letter-spacing: 4px;   /* Mucho aire entre letras */
+  text-transform: uppercase;
+  color: #1a1a1a;
+  opacity: 0.7;          /* Color más suave, no un negro tan fuerte */
 }
 
 /* =========================
-   ANIMALS (ESTILO EDITORIAL DESKTOP)
+   BACKGROUND SECTIONS
    ========================= */
-@media (min-width: 769px) {
-  .animal { 
-    margin-bottom: 90px !important; /* Aumentamos un poco el aire entre piezas */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Alinea el nombre al inicio (izquierda) de la foto */
-  }
-
-  .animal img { 
-    width: 100%; 
-    display: block; 
-  }
-
-  .animal-name {
-    margin-top: 16px !important; /* Más pegado a la foto como etiqueta técnica */
-    font-size: 12px !important;  
-    font-weight: 400 !important; 
-    letter-spacing: 3.5px !important; 
-    text-transform: uppercase;
-    color: #1a1a1a !important; 
-    text-align: left !important;
-    opacity: 0.7; /* Texto nítido pero que no compite con el objeto */
-  }
-}
-/* =========================
-   BACKGROUND SECTIONS (HERITAGE / CRAFT / ECO)
-   ========================= */
-
-/* Ajuste base para todas las pantallas */
 .bg {
-  min-height: 80vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 60px 0;
+  min-height:80vh;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding-top:60px;
+  padding-bottom:60px;
+}
+.heritage { background-image: url("../images/backgrounds/heritage.webp"); }
+.craft { background-image: url("../images/backgrounds/craftsmanship.webp"); }
+.eco { background-image: url("../images/backgrounds/eco.webp"); }
+.maintenance { background-image: url("../images/backgrounds/maintenance.webp"); }
+
+.overlay {
+  background: #ffffff; /* Blanco sólido para un look más limpio y editorial */
+  padding: 80px;
+  max-width: 550px; /* Un poco más estrecho para que el texto sea más fácil de leer */
+  margin-left: 10%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05); /* Sombra muy sutil que da profundidad */
 }
 
-.heritage { background-image: url("../images/backgrounds/heritage.jpg"); }
-.craft { background-image: url("../images/backgrounds/craftsmanship.jpg"); }
-.eco { background-image: url("../images/backgrounds/eco.jpg"); }
-.maintenance { background-image: url("../images/backgrounds/maintenance.jpg"); }
-
-/* --- MEJORAS EXCLUSIVAS DESKTOP --- */
-@media (min-width: 769px) {
-  .bg {
-  min-height: 80vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 60px 0;
+/* Añadimos este ajuste para el texto dentro del cuadro */
+.overlay p { 
+  font-size: 17px; 
+  line-height: 1.8; 
+  color: #444;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Fuente sans para el cuerpo de texto, más moderna */
 }
+.overlay blockquote { margin-top:24px; font-style:italic; }
 
-.heritage { background-image: url("../images/backgrounds/heritage.jpg"); }
-.craft { background-image: url("../images/backgrounds/craftsmanship.jpg"); }
-.eco { background-image: url("../images/backgrounds/eco.jpg"); }
-.maintenance { background-image: url("../images/backgrounds/maintenance.jpg"); }
-
-/* =========================
-   BACKGROUND SECTIONS (VERSION COMPACTA)
-   ========================= */
-
-@media (min-width: 769px) {
-  .bg {
-    min-height: 80vh; 
-    padding: 80px 0;
-  }
-
-/* =========================
-   VERSION RESTAURADA: CAJA EQUILIBRADA (DESKTOP)
-   ========================= */
-
-@media (min-width: 769px) {
-  .bg {
-    min-height: 85vh; 
-    display: flex;
-    align-items: flex-end; /* Mantiene la caja abajo */
-    padding-bottom: 80px !important; /* El "cm" de aire con el suelo */
-    padding-top: 0; 
-  }
-
-  .overlay {
-    background: rgba(255, 255, 255, 0.98);
-    /* Volvemos al padding que se sentía bien */
-    padding: 35px 45px !important; 
-    max-width: 420px !important; 
-    /* Mantenemos el 6% para que esté un pelín más a la izquierda */
-    margin-left: 6% !important; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    margin-bottom: 0 !important;
-  }
-
-  /* Recuperamos el tamaño de letra premium */
-  .overlay h2 { 
-    font-size: 28px !important; 
-    margin-bottom: 18px; 
-    color: #1a1a1a;
-  }
-
-  .overlay p { 
-    font-size: 16.5px !important; 
-    line-height: 1.65; 
-    color: #333; 
-  }
-
-  .overlay blockquote { 
-    margin-top: 22px; 
-    padding-top: 22px; 
-    border-top: 1px solid #d1d1d1 !important; 
-    font-style: italic;
-    font-size: 15px !important; 
-    color: #555;
-  }
-}
 /* FULL IMAGES */
 .full-image, .final-image img { width:100%; display:block; }
 
 /* HEADINGS */
 h2 { font-size:32px; font-weight:400; letter-spacing:0.6px; }
 h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
-
-/* ANCHOR OFFSET FIX FOR FIXED HEADER */
-#collection, #heritage, #craft, #eco, #contact { scroll-margin-top:var(--header-height); }
 
 /* =========================
    PACKAGING
@@ -338,43 +461,45 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 }
 
 /* =========================
-   CONTACT
+   CONTACTO
    ========================= */
-.contact .divider {
-  width: 200px;
-  height: 1px;
-  background-color: #c0c0c0;
-  margin: 24px auto;
-}
-.contact h2 { text-align: center; margin: 16px 0 24px; }
-.contact-text {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 32px;
-}
 
-/* Contact images con captions */
 .contact-images {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;           /* Espacio entre las 3 imágenes */
+  margin: 50px auto;
+  max-width: 1000px;   /* Esto hace que las fotos no crezcan demasiado */
+  width: 90%;
 }
 .contact-item {
+  flex: 1;
+  max-width: 280px;    /* Aquí controlas el tamaño: más pequeño = fotos más pequeñas */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.contact-item img {
-  width: 200px; 
-  height: auto;
+
+.contact-item img { 
+  width: 100%; 
+  aspect-ratio: 1 / 1; 
+  object-fit: cover; 
+  display: block;
+  border-radius: 2px;
 }
 .contact-caption {
-  margin-top: 8px;
-  font-size: 14px;
-  font-style: italic;
-  text-align: center;
+  margin-top: 15px;
+  /* Forzamos la misma tipografía del body */
+  font-family: 'Inter', -apple-system, sans-serif; 
+  font-size: 14px;            /* Tamaño similar a los animales */
+  font-weight: 300;           /* Grosor ligero, coherente con la marca */
+  color: #1a1a1a;             /* El mismo negro suave que usas arriba */
+  text-transform: capitalize; /* Primera letra Mayúscula */
+  letter-spacing: 2px;        /* Un poco de aire para que sea elegante, pero no tanto como el 90% */
+  opacity: 0.8;               /* Le damos ese toque sutil de "pie de página" */
 }
+4.
 
 /* =========================
    COOKIE POPUP
@@ -416,7 +541,6 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   padding: 40px 10%;
   font-size: 14px;
 }
-
 .site-footer a {
   color: #1a1a1a;
   text-decoration: underline;
@@ -428,21 +552,18 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
    ========================= */
 @media (max-width:768px) {
 
-  /* Header logo */
   .header-inner { justify-content:center; padding:0 16px; }
   .logo { height:32px; display:block; margin:0 auto; }
 
-  /* Mostrar hamburguesa */
   .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
 
-  /* Off-canvas menu */
   .main-nav {
     display:none;
     position:fixed;
     top:0;
     left:-250px;
     width:250px;
-    height:100%; /* Ocupa toda la altura */
+    height:100%;
     background:#fff;
     box-shadow:5px 0 30px rgba(0,0,0,0.05);
     transition:left 0.3s ease;
@@ -451,14 +572,12 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     padding-top:80px;
     padding-left:40px;
     padding-right:20px;
-    
-    /* AÑADE ESTA LÍNEA PARA PERMITIR EL SCROLL */
     overflow-y: auto; 
   }
   .main-nav.open { left:0; display:flex; }
 
-  /* NUEVO: Estilo de la X de cierre */
   .close-menu {
+    display: block;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -489,9 +608,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     padding: 0 0 10px 20px;
     background: none;
   }
-  .has-submenu.active .submenu {
-    display: block;
-  }
+  .has-submenu.active .submenu { display: block; }
   .has-submenu .submenu li a {
     font-size: 16px;
     color: #888;
@@ -499,559 +616,43 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     padding: 8px 0;
   }
 
-  /* Hero quote adjustments */
-  .hero-quote { position:static; color:#1a1a1a; padding:24px; max-width:none; font-size:18px; }
-
-  /* Contact images mobile */
-  .contact-item img { width: 60%; }
+  .hero-text-overlay {
+    position: static;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    transform: none;
+  }
+.collection-dynamics,
+.collection-minimini {
+  grid-template-columns: 1fr;
+  gap: 80px;
+  margin: 80px auto 120px;
+}
+.animal {
+    max-width: 100%;
+  }
+.collection-dynamics,
+  .collection-minimini {
+    padding: 0 6vw;
+  }
+.contact-item {
+  max-width: 100%; /* En móvil permitimos que ocupen más ancho si es necesario */
+}
   .contact-caption { font-size: 12px; }
 
-  /* Ocultar lang switch */
   .lang-switch { display:none; }
 }
-
-/* =========================
-   AJUSTES ESPAÑOL RESPONSIVE
-   ========================= */
-@media (max-width:768px) {
-  .hero-quote {
-    font-size: 18px; 
-    line-height: 1.9;
-    padding: 24px 16px;
-  }
-
-  #collection .overlay p,
-  #heritage .overlay p,
-  #craft .overlay p,
-  #eco .overlay p,
-  #maintenance .overlay p {
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  .contact-caption {
-    font-size: 12px;
-  }
-
-  .site-footer p a {
-    display: inline-block;
-    margin: 4px 6px 4px 0;
-  }
-  
-.animal-name {
-  margin-top: 14px;
-  font-size: 10px;
-  font-weight: 200;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #8e8e8e;
-  opacity: 0.85;
-}
-
-.collection-dynamics .animal {
-  margin-bottom: 72px;
-}
-
-.collection-minimini .animal {
-  margin-bottom: 42px;
-}
-
-.collection-dynamics .animal {
-  margin-bottom: 64px; 
-}
-
-.collection-minimini .animal {
-  margin-bottom: 36px; 
-}
-}
-/* --- AJUSTES EXCLUSIVOS PARA DESKTOP --- */
-@media (min-width: 769px) {
-
-  /* 1. Crea el subrayado elegante que crece desde el centro */
-  .main-nav ul li a {
-    position: relative;
-    text-decoration: none;
-  }
-
-  .main-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px; /* Grosor fino y elegante */
-    bottom: -4px;
-    left: 50%;
-    background-color: #1a1a1a;
-    transition: all 0.3s ease-in-out;
-    transform: translateX(-50%);
-  }
-
-  /* El subrayado aparece al pasar el ratón */
-  .main-nav ul li a:hover::after {
-    width: 100%;
-  }
-
-  /* 2. Control del submenú de Collection */
-  /* Forzamos que el submenú esté oculto por defecto en desktop */
-  .has-submenu .submenu {
-    display: none !important; 
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  /* Solo se muestra cuando el foco o el ratón están sobre 'Collection' */
-  .has-submenu:hover .submenu,
-  .has-submenu:focus-within .submenu {
-    display: block !important;
-    opacity: 1;
-  }
-}
-/* --- ESTILO PORTADA DESKTOP --- */
-@media (min-width: 769px) {
-  .hero-image {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Alinea el texto a la derecha */
-  }
-
-  .hero-text-overlay {
-    position: absolute;
-    right: 8%; /* Separación del borde derecho */
-    color: #ffffff;
-    text-align: right;
-  }
-
-.hero-text-overlay h1 {
-  font-family: 'Playfair Display', serif; /* Fuente elegante con serifa */
-  font-size: 72px; /* Tamaño grande para desktop */
-  font-weight: 400;
-  line-height: 1.0;
-  color: #ffffff;
-  text-align: right;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-  /* El estilo de la foto es ligeramente itálico o muy fluido */
-  font-style: normal; 
-}
-
-.hero-tagline {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 7px; /* Mucho espacio para el subtítulo */
-  color: #ffffff;
-  text-transform: uppercase;
-  opacity: 0.8;
-  text-align: right;
-}
-/* --- HEADER TRANSPARENTE SOBRE LA FOTO --- */
-.site-header {
-  background: transparent !important; /* Quitamos el fondo blanco */
-  border-bottom: none !important;     /* Quitamos la línea gris */
-  position: absolute;                /* Lo ponemos sobre el contenido */
-}
-
-/* Cambiamos el color de los enlaces del menú a Blanco Perla */
-.main-nav a {
-  color: #fdfcf9 !important; /* Blanco Perla (un blanco roto muy elegante) */
-  text-shadow: 0 1px 4px rgba(0,0,0,0.2); /* Sutil sombra para que se lea bien sobre madera clara */
-}
-
-/* El logo también necesita ser blanco si es un SVG de color negro */
-.logo {
-  filter: brightness(0) invert(1); /* Convierte el logo negro en blanco */
-  opacity: 1;
-}
-
-/* Cambiamos el selector de idiomas */
-.lang-switch {
-  color: #fdfcf9 !important;
-}
-.lang-switch a {
-  color: #fdfcf9 !important;
-}
-
-/* Ajuste del Hero para que la imagen empiece desde arriba del todo */
-.hero {
-  margin-top: 0 !important; /* Eliminamos el hueco que dejaba el header */
-}
-.has-submenu .submenu {
-  background: #fff; /* Esto lo dejamos así para que el menú desplegable sea legible */
-}
-/* --- 1. ESTADO INICIAL (ARRIBA DEL TODO) --- */
-.site-header {
-  background: transparent !important;
-  border-bottom: none !important;
-  transition: all 0.4s ease; /* Transición suave de color */
-}
-
-/* Letras en Blanco Perla y Logo blanco */
-.site-header:not(.scrolled) .main-nav a,
-.site-header:not(.scrolled) .lang-switch,
-.site-header:not(.scrolled) .lang-switch a {
-  color: #fdfcf9 !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.site-header:not(.scrolled) .logo {
-  filter: brightness(0) invert(1);
-}
-
-/* Subrayado elegante en Blanco Perla para el estado inicial */
-@media (min-width: 769px) {
-  .site-header:not(.scrolled) .main-nav ul li a::after {
-    background-color: #fdfcf9 !important;
-  }
-}
-
-/* --- 2. ESTADO AL HACER SCROLL (VUELVE A SER COMO ANTES) --- */
-.site-header.scrolled {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e5e5e5 !important;
-  height: 70px; /* Un poco más estrecho al bajar para dar elegancia */
-}
-
-.site-header.scrolled .main-nav a,
-.site-header.scrolled .lang-switch,
-.site-header.scrolled .lang-switch a {
-  color: #1a1a1a !important;
-  text-shadow: none;
-}
-
-.site-header.scrolled .logo {
-  filter: none;
-}
-
-/* El subrayado vuelve a ser negro al hacer scroll */
-@media (min-width: 769px) {
-  .site-header.scrolled .main-nav ul li a::after {
-    background-color: #1a1a1a !important;
-  }
-}
-
-/* --- 3. AJUSTE DEL HERO --- */
-.hero {
-  margin-top: 0 !important; /* La imagen sube hasta arriba del todo */
-}
-/* --- CORRECCIÓN HEADER Y SUBMENÚ --- */
-
-/* Asegura que el header siempre sea visible */
-.site-header {
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: background 0.4s ease, height 0.4s ease;
-}
-
-/* 1. ESTADO TRANSPARENTE (ARRIBA) */
-.site-header:not(.scrolled) {
-  background: transparent !important;
-  border-bottom: none !important;
-}
-
-/* Submenú transparente antes del scroll */
-.site-header:not(.scrolled) .has-submenu .submenu {
-  background: transparent !important; /* Fondo transparente */
-  box-shadow: none !important;
-  padding-top: 15px;
-}
-
-/* Letras claras para el submenú antes del scroll */
-.site-header:not(.scrolled) .has-submenu .submenu li a {
-  color: #fdfcf9 !important; /* Blanco Perla */
-  text-align: left;
-  padding: 5px 0;
-  opacity: 0.9;
-}
-
-/* Subrayado blanco para los elementos del submenú */
-.site-header:not(.scrolled) .has-submenu .submenu li a:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
-
-/* 2. ESTADO SCROLLED (FONDO BLANCO) */
-.site-header.scrolled {
-  background: rgba(255, 255, 255, 0.98) !important; /* Blanco casi opaco */
-  border-bottom: 1px solid #e5e5e5 !important;
-  height: 70px; /* Se estrecha un poco para elegancia */
-}
-
-/* Volvemos a las letras oscuras en el submenú al hacer scroll */
-.site-header.scrolled .has-submenu .submenu {
-  background: #ffffff !important;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
-}
-
-.site-header.scrolled .has-submenu .submenu li a {
-  color: #1a1a1a !important;
-}
-
-/* 3. SUBRAYADO ELEGANTE BLANCO (ANTES DEL SCROLL) */
-@media (min-width: 769px) {
-  .site-header:not(.scrolled) .main-nav ul li a::after {
-    background-color: #fdfcf9 !important;
-  }
-}
-/* --- AJUSTE FINAL POSICIÓN DEL TEXTO (3.5 cm abajo) --- */
-@media (min-width: 769px) {
-  .hero-text-overlay {
-    /* Bajamos de 115px a 134px para añadir ese medio centímetro extra */
-    top: calc(50% + 134px) !important; 
-    transform: translateY(-50%);
-  }
-}
-/* --- AJUSTE POSICIÓN LOGO --- */
-.header-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Reducimos el espacio de la izquierda 38px (aprox 1cm) */
-  padding: 0 60px 0 22px !important; 
-  position: relative;
-  transition: padding 0.4s ease; /* Para que sea suave con el scroll */
-}
-
-/* Ajuste específico cuando se hace scroll para mantener la simetría */
-.site-header.scrolled .header-inner {
-  padding: 0 60px 0 22px !important;
-}
-/* --- AJUSTE FINAL TAMAÑO MENÚ DESKTOP --- */
-@media (min-width: 769px) {
-  .main-nav a {
-    /* Ajuste exacto a 14px */
-    font-size: 14px !important; 
-    letter-spacing: 0.5px;
-    font-weight: 300;
-    transition: color 0.3s ease;
-  }
-
-  /* El subrayado a -6px sigue siendo la distancia ideal para este tamaño */
-  .main-nav ul li a::after {
-    bottom: -6px !important;
-  }
-}
-/* --- LIMPIEZA DE DOBLE RAYA EN SUBMENÚ --- */
-.has-submenu .submenu li a {
-  border-bottom: none !important; /* Elimina la raya estática inferior */
-  text-decoration: none !important; /* Asegura que no haya subrayado por defecto */
-}
-
-/* Ajuste del subrayado animado para el submenú en Desktop */
-@media (min-width: 769px) {
-  .has-submenu .submenu li a::after {
-    bottom: 2px !important; /* Sube un poco la raya para que quede pegada al texto del submenú */
-    height: 1px;
-  }
-}
-/* --- UNIFICAR SUBRAYADO ANIMADO EN TODO EL MENÚ --- */
-
-/* 1. Aplicamos la base del subrayado a los enlaces del submenú */
-.has-submenu .submenu li a {
-  position: relative;
-  text-decoration: none !important;
-  border-bottom: none !important; /* Eliminamos definitivamente la raya estática */
-  display: inline-block; /* Necesario para que la raya mida lo mismo que el texto */
-}
-
-/* 2. Creamos la línea que nace desde el centro para el submenú */
-.has-submenu .submenu li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: 0; /* Ajuste para que quede pegado a la palabra */
-  left: 50%;
-  transition: all 0.3s ease-in-out;
-  transform: translateX(-50%);
-  /* Color dinámico según el estado del scroll */
-  background-color: currentColor; 
-}
-
-/* 3. Activamos la animación al pasar el ratón */
-.has-submenu .submenu li a:hover::after {
-  width: 100%;
-}
-
-/* 4. Aseguramos que el color sea blanco perla antes del scroll y negro después */
-.site-header:not(.scrolled) .submenu li a::after {
-  background-color: #fdfcf9 !important;
-}
-
-.site-header.scrolled .submenu li a::after {
-  background-color: #1a1a1a !important;
-}
-/* --- EFECTO DE FOCO (COLOR) EN SUBMENÚ --- */
-
-/* 1. Estado inicial del texto en el submenú */
-.has-submenu .submenu li a {
-  transition: color 0.3s ease, opacity 0.3s ease !important;
-}
-
-/* 2. Cuando el menú es TRANSPARENTE (Arriba) */
-/* El texto es Blanco Perla y se vuelve Blanco Puro al situarse encima */
-.site-header:not(.scrolled) .submenu li a {
-  color: #fdfcf9 !important;
-  opacity: 0.7; /* Ligeramente transparente por defecto */
-}
-
-.site-header:not(.scrolled) .submenu li a:hover {
-  color: #ffffff !important;
-  opacity: 1; /* Se ilumina al 100% */
-}
-
-/* 3. Cuando el menú es BLANCO (Scroll) */
-/* El texto es Gris Oscuro y se vuelve Negro Puro al situarse encima */
-.site-header.scrolled .submenu li a {
-  color: #444444 !important; /* Gris intermedio */
-}
-
-.site-header.scrolled .submenu li a:hover {
-  color: #000000 !important; /* Negro total para que se "oscurezca" */
-}
-/* --- EFECTO DE OSCURECIMIENTO TOTAL AL HACER HOVER --- */
-
-/* 1. Cuando el menú es BLANCO (Estado Scrolled) */
-/* Forzamos que el texto pase de gris a negro puro */
-.site-header.scrolled .main-nav ul li .submenu li a {
-    color: #666666 !important; /* Gris claro de base */
-    transition: all 0.3s ease !important;
-}
-
-.site-header.scrolled .main-nav ul li .submenu li a:hover {
-    color: #000000 !important; /* Negro puro al situarse encima */
-    font-weight: 400 !important; /* Un poco más de grosor para que se note más el 'foco' */
-}
-
-/* 2. Cuando el menú es TRANSPARENTE (Sobre la foto) */
-/* Aquí 'oscurecer' no funcionaría bien, así que lo hacemos más brillante */
-.site-header:not(.scrolled) .main-nav ul li .submenu li a {
-    color: rgba(253, 252, 249, 0.7) !important; /* Blanco perla con transparencia */
-    transition: all 0.3s ease !important;
-}
-
-.site-header:not(.scrolled) .main-nav ul li .submenu li a:hover {
-    color: #ffffff !important; /* Blanco total brillante */
-    opacity: 1 !important;
-}
-/* Añade esto a tu style.css */
-.logo {
-  transition: filter 0.4s ease, transform 0.3s ease !important;
-}
-
-.logo:hover {
-  transform: scale(1.02); /* Un efecto muy sutil al pasar el ratón por el logo */
-}
-/* Actualiza tu regla .site-header.scrolled */
-.site-header.scrolled {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
-}
-.hero {
-  background-position: center 20% !important; /* Mueve la foto un poco hacia arriba para que el texto respire abajo */
-  background-size: cover;
-}
-/* --- AJUSTE POSICIÓN LOGO: 1CM A LA DERECHA --- */
-.header-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Aumentamos el padding izquierdo de 22px a 60px */
-  padding: 0 60px 0 30px !important; 
-  position: relative;
-  transition: padding 0.4s ease;
-}
-
-/* Mantenemos la consistencia al hacer scroll */
-.site-header.scrolled .header-inner {
-  padding: 0 60px 0 30px !important;
-}
-/* ============================================================
-   ESTILO EDITORIAL PREMIUM (MRDODO LUXURY LAYER)
-   ============================================================ */
-
-@media (min-width: 769px) {
-  
-  /* 1. CEJAS DE MARCA (Brand Eyebrows) */
-  .brand-eyebrow, .overlay-eyebrow {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 15px;
-    font-weight: 400;
-  }
-
-  /* 2. INTRODUCCIÓN DE COLECCIÓN */
-  .collection-intro {
-    text-align: center;
-    margin-bottom: 80px;
-    margin-top: 40px;
-  }
-  
-  .collection-intro .section-title {
-    margin-bottom: 0;
-    font-size: 42px; /* Un poco más de autoridad */
-  }
-
-  /* 3. FIRMA EDITORIAL (En Heritage y Craft) */
-  .overlay .signature {
-    border-top: 1px solid #d1d1d1 !important;
-    margin-top: 30px !important;
-    padding-top: 25px !important;
-    font-family: 'Playfair Display', serif;
-    font-size: 18px !important;
-    color: #1a1a1a !important;
-    line-height: 1.5;
-    font-style: italic;
-  }
-
-  /* 4. CONTACTO REFINADO */
-  .contact-info {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .contact-location {
-    font-size: 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    color: #1a1a1a;
-  }
-
-  .contact-address, .contact-email {
-    font-size: 14px;
-    color: #666;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-  }
-
-  /* 5. ANIMACIÓN SUTIL AL CARGAR LA PÁGINA */
-  .hero-text-overlay h1 {
-    animation: luxuryFadeIn 2s ease-out;
-  }
-}
-
+/* Animación de entrada premium */
 @keyframes luxuryFadeIn {
-  from { opacity: 0; transform: translateY(15px); filter: blur(5px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-/* Ajuste sutil para el efecto de zoom en la portada */
-.hero { overflow: hidden; }
-.hero-image img {
-  transition: transform 15s ease-out !important;
-}
-.hero:hover .hero-image img {
-  transform: scale(1.08);
-}
-.contact-phone {
-  font-size: 13px;
-  color: #999; /* Un gris más claro para que sea secundario */
-  letter-spacing: 1px;
-  margin-top: 10px;
-  font-weight: 300;
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); /* Empieza 20px más abajo */
+    filter: blur(5px);           /* Empieza un poco borroso */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);    /* Sube a su posición original */
+    filter: blur(0);             /* Se enfoca totalmente */
+  }
 }
