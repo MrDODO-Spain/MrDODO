@@ -11,7 +11,7 @@ html {
 body {
   font-family: 'Inter', -apple-system, sans-serif;
   background-color: #f7f6f2;
-  color: #1a1a1a;
+  color: #222222;
   line-height: 1.6;
   font-weight: 200;
   -webkit-font-smoothing: antialiased;
@@ -256,29 +256,33 @@ body {
 
 .hero-text-overlay h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 72px;
-  line-height: 1.0;
+  font-size: 58px;
+  max-width: 520px;
+  line-height: 1.05;
   font-weight: 400;
   margin-bottom: 20px;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   animation: luxuryFadeIn 2s ease-out forwards;
 }
 
 .hero-tagline {
-  display: none; /* <--- Esto suspende la visualización sin borrar el texto */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 12px;
-  letter-spacing: 7px; /* Mucho espacio como en la referencia */
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;           /* Aumentamos un poco el tamaño */
+  font-weight: 200;           /* Lo hacemos más fino (Extra Light) */
+  letter-spacing: 6px;        /* Espaciado generoso para elegancia */
   text-transform: uppercase;
-  opacity: 0.8;
+  color: #ffffff;
+  opacity: 0.9;
+  margin-top: 25px;           /* Más aire respecto al título */
+  
+  /* Animación */
   animation: luxuryFadeIn 2s ease-out forwards;
-  animation-delay: 0.5s; /* Tarda medio segundo más en aparecer */
-  opacity: 0; /* Para que no se vea antes de empezar la animación */
+  animation-delay: 0.8s;
+  opacity: 0; 
 }
 .hero-text-overlay h1, 
-.hero-tagline {
-  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
+
 /* =========================
    ANIMACIÓN ZOOM PORTADA
    ========================= */
@@ -306,14 +310,14 @@ body {
     transform: scale(1); /* Tamaño original */
   }
   100% {
-    transform: scale(1.1); /* Crece un 10% */
+    transform: scale(1.04); /* Crece un 10% */
   }
 }
 /* =========================
    SECTIONS
    ========================= */
 .section { 
-  padding: 80px 5%; 
+  padding: 110px 5%; 
   text-align: center;
 }
 
@@ -322,19 +326,26 @@ body {
 #collection-minimini {
   scroll-margin-top: 130px; /* Espacio extra para que se vea The Collection y Dynamics */
 }
-.section-title { 
-  font-size: 32px; 
-  margin-bottom: 5px;    /* Pegamos el título principal al de abajo */
+.collection-dynamics {
+  margin-bottom: 120px; /* NUEVO: espacio extra antes de MiniMini */
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #222222;
+  margin: 24px 0 32px;
   display: inline-block;
 }
 .subsection-title {
   text-align: center;
   margin-top: 15px;      /* Espacio reducido para que parezcan un solo bloque */
   margin-bottom: 60px;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 300;
   letter-spacing: 4px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .section-title + .subsection-title { margin-top: 40px; }
 
@@ -393,7 +404,7 @@ body {
   font-weight: 300;
   letter-spacing: 4px;   /* Mucho aire entre letras */
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: #222222;
   opacity: 0.7;          /* Color más suave, no un negro tan fuerte */
 }
 
@@ -401,7 +412,7 @@ body {
    BACKGROUND SECTIONS
    ========================= */
 .bg {
-  min-height:80vh;
+  min-height:100vh;
   background-size:cover;
   background-position:center;
   display:flex;
@@ -409,25 +420,47 @@ body {
   padding-top:60px;
   padding-bottom:60px;
 }
+/* Forzamos a Craft a comportarse como una sección de impacto total */
+.craft {
+  background-image: url("../images/backgrounds/craftsmanship.webp");
+  background-attachment: scroll; /* Asegura que la imagen se mueva con el scroll si prefieres */
+}
 .heritage { background-image: url("../images/backgrounds/heritage.webp"); }
 .craft { background-image: url("../images/backgrounds/craftsmanship.webp"); }
-.eco { background-image: url("../images/backgrounds/eco.webp"); }
+.eco {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../images/backgrounds/eco.webp");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 .maintenance { background-image: url("../images/backgrounds/maintenance.webp"); }
 
 .overlay {
-  background: #ffffff; /* Blanco sólido para un look más limpio y editorial */
-  padding: 80px;
-  max-width: 550px; /* Un poco más estrecho para que el texto sea más fácil de leer */
+  background: #ffffff; 
+  padding: 40px 50px;    /* Reducimos el padding exagerado de 80px */
+  max-width: 400px;      /* ANTES 550px -> AHORA 400px (Mucho más pequeño) */
   margin-left: 10%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.05); /* Sombra muy sutil que da profundidad */
+  box-shadow: 0 15px 45px rgba(0,0,0,0.03); /* Sombra aún más sutil */
+  text-align: left;      /* Alineación a la izquierda para look editorial */
 }
 
 /* Añadimos este ajuste para el texto dentro del cuadro */
 .overlay p { 
-  font-size: 17px; 
+  font-size: 15px;       /* Bajamos de 17px a 15px para elegancia */
   line-height: 1.8; 
-  color: #444;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Fuente sans para el cuerpo de texto, más moderna */
+  color: #555;           /* Gris un poco más suave */
+  font-weight: 300;      /* Inter más fina */
+  font-family: 'Inter', sans-serif;
+}
+/* Si tienes títulos dentro del cuadro blanco */
+.overlay h2, .overlay h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 .overlay blockquote { margin-top:24px; font-style:italic; }
 
@@ -435,29 +468,308 @@ body {
 .full-image, .final-image img { width:100%; display:block; }
 
 /* HEADINGS */
-h2 { font-size:32px; font-weight:400; letter-spacing:0.6px; }
 h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
+
+/* =========================
+   HERITAGE — EDITORIAL BLOCK
+   ========================= */
+
+.heritage {
+  min-height: 100vh;
+  display: flex;
+  padding-top: 140px;
+  align-items: flex-start;
+  background-position: center;
+}
+
+.heritage-overlay {
+  background: rgba(247, 246, 242, 0.88); /* mismo tono del body */
+  backdrop-filter: blur(2px);
+  padding: 36px 44px;
+  max-width: 340px;
+  margin-left: 10%;
+  margin-top: 180px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+  text-align: left;
+  border-radius: 1px;
+  background: linear-gradient(
+    rgba(247, 246, 242, 0.92),
+    rgba(247, 246, 242, 0.85)
+  );
+}
+.heritage-overlay h2 {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin-bottom: 32px;
+  color: #222222;
+  text-transform: uppercase;
+  opacity: 0.75;
+  
+}
+
+.heritage-overlay p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: rgba(0,0,0,0.65);
+  margin: 0;
+}
+.heritage-overlay p br + br {
+  content: "";
+  display: block;
+  margin-top: 22px;
+}
+/* =========================
+   CRAFT — AUTHORIAL BLOCK
+   ========================= */
+
+.craft {
+  position: relative;
+}
+
+.craft-overlay {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+  max-width: 340px;
+  text-align: left;
+  color: #ffffff;
+}
+
+/* Título Craft */
+.craft-overlay h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;          /* antes 19px */
+  font-weight: 300;
+  letter-spacing: 2.5px;    /* antes 4px */
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  color: #ffffff;
+  opacity: 0.75;
+  margin-left: 0;
+}
+
+/* Texto Craft */
+.craft-overlay p {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;          /* antes 24px */
+  font-weight: 300;         /* antes 400 */
+  line-height: 1.5;
+  color: #ffffff;
+  max-width: 360px;
+  margin-left: 0;
+}
+  
+.craft-overlay p br {
+  display: block;
+  margin-bottom: 10px;
+}
+.craft-line {
+  position: absolute;
+  top: 50%;
+  left: 45px;
+  transform: translateX(-32px) translateY(-50%);
+  width: 1px;
+  height: 160px;
+  background-color: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+/* =========================
+   SUSTAINABILITY — EDITORIAL BLOCK
+   ========================= */
+
+.eco-overlay {
+  background: linear-gradient(
+    rgba(247, 246, 242, 0.94),
+    rgba(247, 246, 242, 0.88)
+  );
+  backdrop-filter: blur(4px);
+  padding: 38px 42px;
+  max-width: 340px;
+  margin-left: 10%;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.04);
+  text-align: left;
+  border-radius: 1px;
+}
+
+.eco-overlay h2 {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 34px;
+  color: #222222;
+  opacity: 0.6;
+}
+
+.eco-overlay p {
+  font-family: 'Playfair Display', serif;
+  font-size: 15.5px;
+  line-height: 1.85;
+  font-weight: 300;
+  color: rgba(0,0,0,0.78);
+  margin: 0;
+}
+.eco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+  to right,
+  rgba(0,0,0,0.12),
+  rgba(0,0,0,0.03)
+);
+  pointer-events: none;
+}
+
+/* =========================
+   MAINTENANCE – MRDODO PREMIUM
+   ========================= */
+.maintenance {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background-image: url("../images/backgrounds/maintenance.webp"); /* ver sugerencia abajo */
+  background-size: cover;
+  background-position: 25% center;
+  overflow: hidden;
+}
+
+/* Overlay sutil para mejorar contraste */
+.maintenance::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* HEMOS BAJADO LOS VALORES DE 0.92 a 0.6 y de 0.3 a 0.1 */
+  background: linear-gradient(
+    to right, 
+    rgba(247, 246, 242, 0.2), 
+    rgba(247, 246, 242, 0.1)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 2. Opcional: Si quieres que la foto tenga más fuerza, 
+      podemos añadir un ligero oscurecimiento general */
+.maintenance {
+  background-image: url("../images/backgrounds/maintenance.webp");
+  background-size: cover;
+  background-position: center;
+  /* Esto ayuda a que el texto blanco/negro resalte según la foto */
+  background-color: #f7f6f2; 
+}
+
+.maintenance-overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 340px;
+  margin-left: 10%;
+  animation: luxuryFadeIn 2s ease-out forwards;
+  color: #222222;
+  text-align: left;
+}
+
+.maintenance-overlay h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 34px;
+  opacity: 0.65;
+}
+
+.maintenance-overlay p {
+  font-family: 'Playfair Display', serif;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(0,0,0,0.8);
+  margin-bottom: 22px;
+}
+
+.maintenance-overlay .microcopy {
+  font-family: 'Playfair Display', serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.6);
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* Animación zoom del fondo */
+.maintenance {
+  animation: none;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* Animación entrada premium */
+@keyframes luxuryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+
 
 /* =========================
    PACKAGING
    ========================= */
+
+.packaging {
+  position: relative;
+  background-color: #f7f6f2;
+  padding: 110px 5%; /* Más aire arriba */
+  text-align: center;
+}
+
 .packaging .divider {
-  width: 200px;
+  width: 180px; /* ligeramente más pequeño */
   height: 1px;
   background-color: #c0c0c0;
-  margin: 24px auto;
+  margin: 32px auto;
 }
-.packaging h2 { text-align: center; margin: 16px 0 32px; }
+
 .packaging p {
-  font-size: 18px;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
   font-weight: 300;
   line-height: 1.8;
-  text-align: center;
-  color: #1a1a1a;
   max-width: 640px;
-  margin: 24px auto 48px;
+  margin: 24px auto 64px;
   letter-spacing: 0.3px;
+  color: #222222;
   font-style: italic;
+  opacity: 0.85;
+}
+
+/* Imagen full-width */
+.packaging .full-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 32px;
+  transition: transform 0.6s ease;
+}
+.packaging .full-image:hover {
+  transform: scale(1.01); /* micro movimiento premium */
 }
 
 /* =========================
@@ -494,13 +806,17 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   font-family: 'Inter', -apple-system, sans-serif; 
   font-size: 14px;            /* Tamaño similar a los animales */
   font-weight: 300;           /* Grosor ligero, coherente con la marca */
-  color: #1a1a1a;             /* El mismo negro suave que usas arriba */
+  color: #222222;             /* El mismo negro suave que usas arriba */
   text-transform: capitalize; /* Primera letra Mayúscula */
   letter-spacing: 2px;        /* Un poco de aire para que sea elegante, pero no tanto como el 90% */
   opacity: 0.8;               /* Le damos ese toque sutil de "pie de página" */
 }
-4.
-
+.contact-divider {
+  width: 180px;
+  height: 1px;
+  background-color: #c0c0c0;
+  margin: 32px auto;
+}
 /* =========================
    COOKIE POPUP
    ========================= */
@@ -523,7 +839,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 
 .cookie-popup button {
   background: #fff;
-  color: #1a1a1a;
+  color: #222222;
   border: none;
   padding: 6px 12px;
   cursor: pointer;
@@ -536,13 +852,13 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
    ========================= */
 .site-footer {
   background: #f7f6f2;
-  color: #1a1a1a;
+  color: #222222;
   text-align: center;
   padding: 40px 10%;
   font-size: 14px;
 }
 .site-footer a {
-  color: #1a1a1a;
+  color: #222222;
   text-decoration: underline;
   margin-right: 12px;
 }
@@ -585,7 +901,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     border: none;
     font-size: 40px; 
     font-weight: 200; 
-    color: #1a1a1a;
+    color: #222222;
     line-height: 1;
     cursor: pointer;
     padding: 10px;
@@ -643,6 +959,23 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 
   .lang-switch { display:none; }
 }
+.craft-overlay {
+    position: static;
+    max-width: 90%;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.35);
+    padding: 24px;
+  }
+
+.maintenance-overlay {
+    max-width: 90%;
+    margin-left: 5%;
+  }
+  .maintenance-overlay h2 { font-size: 18px; }
+  .maintenance-overlay p { font-size: 15px; }
+  .maintenance-overlay .microcopy { font-size: 14px; }
+
+  
 /* Animación de entrada premium */
 @keyframes luxuryFadeIn {
   from { 
@@ -655,4 +988,93 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     transform: translateY(0);    /* Sube a su posición original */
     filter: blur(0);             /* Se enfoca totalmente */
   }
+  .packaging-gallery {
+  gap: 20px;
+  padding: 0 5vw 20px;
 }
+
+.gallery-item {
+  width: 70%; /* más grande en móvil para swipe natural */
+}
+}
+
+/* =========================
+   GLOBAL OVERLAY RHYTHM REFINEMENT
+   ========================= */
+
+.heritage-overlay,
+.eco-overlay,
+.maintenance-overlay {
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+.heritage-overlay p,
+.eco-overlay p,
+.maintenance-overlay p {
+  margin-bottom: 26px;
+}
+p {
+  letter-spacing: 0.2px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem;
+  color: #ffffff;
+  opacity: 0.75;
+  animation: bounce 1.5s infinite;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(12px); }
+}   
+/* PACKAGING - GALERÍA HORIZONTAL */
+.packaging-gallery {
+  display: flex;
+  gap: 40px; /* espacio generoso entre fotos */
+  overflow-x: auto; /* permite scroll horizontal */
+  scroll-snap-type: x mandatory; /* cada foto “snap” al centro */
+  padding-bottom: 20px;
+  margin: 40px auto 60px; /* aire editorial */
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 300px; /* ajustable según tu preferencia */
+  scroll-snap-align: center;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 2px; /* sutil lujo */
+  display: block;
+  object-fit: cover;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02); /* micro-zoom elegante */
+}
+/* =========================
+   PACKAGING — SINGLE IMAGE
+   ========================= */
+
+.packaging-image {
+  width: 100%;
+  max-width: 1600px;   /* editorial, no infinito */
+  margin: 80px auto 0;
+}
+
+.packaging-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+

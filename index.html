@@ -56,8 +56,12 @@
 <section id="hero" class="hero">
   <img src="images/hero-01.webp" alt="MrDODO articulated wooden object" class="hero-img">
   <div class="hero-text-overlay">
-  <h1>Articulated wooden objects.<br>Made to move. Made to last.</h1>
-    <p class="hero-tagline">NATURE · SILK · LEGACY</p>
+    <h1>Objects that move. Objects that remain.</h1>
+    <p class="hero-tagline">Crafted in oak. Shaped by time.</p>
+  </div>
+  <!-- micro-indicador de scroll -->
+  <div class="scroll-indicator">
+    <span class="arrow-down">⌄</span>
   </div>
 </section>
 
@@ -90,42 +94,66 @@
 
 <!-- BACKGROUND SECTIONS -->
 <section id="heritage" class="section bg heritage">
-  <div class="overlay">
-    <span class="overlay-eyebrow">Since 1914</span>
-    <h2>Heritage & Time</h2>
-    <p>Three generations of artisans dedicated to the slow mastery of wood.</p>
-    <blockquote class="signature">“We don’t know if a company has a soul, but we like to think it can.”</blockquote>
-  </div>
+  <div class="heritage-overlay">
+  <h2>Heritage & Time</h2>
+  <p>
+    A workshop never abandoned.<br><br>
+Only continued.
+  </p>
+</div>
 </section>
 
 <section id="craft" class="section bg craft">
-  <div class="overlay">
-    <h2>The Art of Making</h2>
-    <p>Behind every piece there lies vision, careful thought and skilled craftsmanship.</p>
+  <div class="craft-overlay">
+    <span class="craft-line" aria-hidden="true"></span>
+
+    <h2>Craftsmanship</h2>
+    <p>
+      Shaped by hand.<br><br>
+      Refined by time.
+    </p>
   </div>
 </section>
 
 <section id="eco" class="section bg eco">
-  <div class="overlay">
-    <h2>Eco & Sustainability</h2>
-    <p>True sustainability means durability.</p>
+  <div class="eco-overlay">
+    <h2>Sustainability</h2>
+    <p>Solid oak. Always.<br><br>
+  Designed to endure — physically and conceptually.<br><br>
+  Fewer objects. Better made.
+</p>
   </div>
 </section>
 
 <section id="maintenance" class="section bg maintenance">
-  <div class="overlay">
-    <h2>Maintenance</h2>
-    <p>Avoid direct sunlight and sudden humidity changes.</p>
+  <div class="maintenance-overlay">
+    <h2>Preserve the Life of Each Creature</h2>
+    <p>
+  Natural oil.<br><br>
+  Soft cloth.<br><br>
+  Gentle movement.<br><br>
+  Care ensures continuity.
+</p>
+    <p class="microcopy">Each movement preserved. Each detail cherished.</p>
   </div>
 </section>
+
 <section class="section packaging">
   <div class="divider"></div>
   <h2 class="section-title">Our Packaging</h2>
-  <img src="images/packaging.jpg" alt="MrDODO packaging" class="full-image">
+  <p>
+    Every detail crafted with care — from the oak box to the final ribbon.
+  </p>
+
+ <!-- PACKAGING IMAGE -->
+  <div class="packaging-image">
+    <img src="images/packaging/packaging-01.webp" alt="MrDODO packaging">
+  </div>
+
 </section>
 
 <section id="contact" class="section contact">
-  <div class="divider"></div>
+  <div class="contact-divider"></div>
   <h2 class="section-title">Contact</h2>
 
   <p class="contact-location">Barcelona, Spain</p>
@@ -185,6 +213,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.slider-track');
+  const slides = Array.from(track.children);
+  const next = document.querySelector('.slider-arrow.right');
+  const prev = document.querySelector('.slider-arrow.left');
+  let index = 0;
+
+  const updateSlider = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  next.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    updateSlider();
+  });
+
+  prev.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlider();
+  });
+});
+</script>
+
 
 </body>
 </html>
