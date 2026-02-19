@@ -1,13 +1,19 @@
 /* =========================
    RESET & FUENTE EXTERNA
    ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=Playfair+Display:wght@400;500&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Reutiliza estilos comunes */
 body {
   font-family: 'Inter', -apple-system, sans-serif;
   background-color: #f7f6f2;
@@ -23,7 +29,9 @@ body {
    ========================= */
 .site-header {
   position: fixed;
-  top: 0; left: 0; width: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 90px;
   background: transparent;
   z-index: 1000;
@@ -33,17 +41,17 @@ body {
 .header-inner {
   height: 100%;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
-  padding: 0 60px 20px 30px; /* Ese '15px' es el que empuja el logo hacia arriba */
+  padding: 0 60px 20px 30px;
 }
 
-.logo { 
-  height: 22px; 
-  filter: brightness(0) invert(1); 
+.logo {
+  height: 22px;
+  filter: brightness(0) invert(1);
   transition: 0.4s;
 }
-/* Ocultar botón de cierre en escritorio */
+
 .close-menu {
   display: none;
 }
@@ -54,14 +62,15 @@ body {
 .main-nav {
   position: absolute;
   left: 50%;
-  top: 50%; /* <--- Cambia 20px por 50% */
-  transform: translate(-50%, -50%); /* <--- Cambia translateX por translate(-50%, -50%) */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s ease, top 0.4s ease;
 }
 
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 12px; 
+  gap: 12px;
 }
 
 .main-nav a {
@@ -72,78 +81,80 @@ body {
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   position: relative;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  display: inline-block; 
-  text-align: left;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: inline-block;
 }
 
-/* Subrayado CENTRADO solo para el menú de arriba */
+/* Subrayado CENTRADO */
 .main-nav > ul > li > a::after {
   content: '';
   position: absolute;
-  width: 0; height: 1px;
-  bottom: 0px; left: 0;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
   background-color: currentColor;
   transition: 0.3s;
-  transform: none;
 }
-.main-nav > ul > li > a:hover::after { width: 100%; }
+.main-nav > ul > li > a:hover::after {
+  width: 100%;
+}
 
 /* =========================
-   SUBMENÚ (Dynamics / Minimini)
+   SUBMENÚ
    ========================= */
 .has-submenu .submenu {
   display: none;
   position: absolute;
-  top: 100%; left: 0;
+  top: 100%;
+  left: 0;
   padding: 5px 0;
   list-style: none;
   text-align: left;
 }
 
-.has-submenu:hover .submenu { display: flex; flex-direction: column; }
+.has-submenu:hover .submenu {
+  display: flex;
+  flex-direction: column;
+}
 
 .has-submenu .submenu a {
   color: #fdfcf9;
   font-size: 13px;
   font-weight: 300;
   padding: 2px 0;
-  display: inline-block;
-  position: relative;
-  transform: none; /* Evita que se mueva a la izquierda */
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Subrayado alineado a la IZQUIERDA para el submenú */
+/* Subrayado alineado a la IZQUIERDA */
 .has-submenu .submenu a::after {
   content: '';
   position: absolute;
-  width: 0; height: 1px;
-  bottom: 2px; left: 0;
+  width: 0;
+  height: 1px;
+  bottom: 2px;
+  left: 0;
   background-color: currentColor;
   transition: width 0.3s ease;
-  transform: none; 
 }
-.has-submenu .submenu a:hover::after { width: 100%; }
+.has-submenu .submenu a:hover::after {
+  width: 100%;
+}
 
-/* ===================================================
-   PUNTO 3: ESTADO SCROLL (CORRECCIÓN DEFINITIVA)
-   =================================================== */
-
-/* 3.1. El contenedor del Header: Se vuelve blanco y más bajo */
+/* =========================
+   ESTADOS SCROLL
+   ========================= */
 .site-header.scrolled {
   background: #ffffff;
   height: 70px;
   border-bottom: 1px solid #e5e5e5;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* 3.2. El Logo: Deja de ser blanco y vuelve a su color original (negro) */
-.site-header.scrolled .logo { 
-  filter: none; 
+.site-header.scrolled .logo {
+  filter: none;
 }
 
-/* 3.3. Textos y Enlaces: Cambiamos a negro y eliminamos sombras para máxima nitidez */
 .site-header.scrolled .main-nav a,
 .site-header.scrolled .has-submenu .submenu a,
 .site-header.scrolled .lang-switch a {
@@ -151,77 +162,91 @@ body {
   text-shadow: none;
 }
 
-/* 3.4. Selector de Idiomas: Ajuste del subrayado activo a negro */
 .site-header.scrolled .lang-switch a.active::after {
   background-color: #1a1a1a;
 }
 
-/* 3.5. Alineación Vertical: Reseteamos los márgenes de portada para centrar todo en 70px */
 .site-header.scrolled .header-inner {
-  padding-bottom: 0; 
+  padding-bottom: 0;
   align-items: center;
 }
 
-/* 3.6. El Menú: Cambia su posición 'top' fija de la portada por un centrado vertical */
 .site-header.scrolled .main-nav {
   top: 50%;
-  transform: translate(-50%, -50%); 
 }
+
 /* =========================
    SELECTOR DE IDIOMAS
    ========================= */
-.lang-switch { display: flex; gap: 12px; }
+.lang-switch {
+  display: flex;
+  gap: 12px;
+}
 
 .lang-switch a {
   text-decoration: none;
   font-size: 12px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #fdfcf9; 
-  font-weight: 300; 
-  opacity: 0.8; /* Subimos la opacidad del no activo del 0.6 al 0.8 */
+  color: #fdfcf9;
+  font-weight: 300;
+  opacity: 0.8;
   position: relative;
   padding-bottom: 5px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .lang-switch a.active {
   opacity: 1;
-  font-weight: 500; /* El activo un poco más sólido */
+  font-weight: 500;
 }
 
 .lang-switch a.active::after {
   content: "";
   position: absolute;
-  left: 0; bottom: 0;
-  width: 100%; height: 1px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
   background-color: currentColor;
 }
-
-
 
 /* =========================
    MENU TOGGLE (HAMBURGUESA)
    ========================= */
 .menu-toggle {
-  display:none;
-  background:none;
-  border:none;
-  cursor:pointer;
-  width:30px;
-  height:24px;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:0;
-  position:relative;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  position: relative;
 }
 .menu-toggle .bar {
-  display:block;
-  width:100%;
-  height:3px;
-  background-color:#1a1a1a;
-  border-radius:2px;
-  transition:all 0.3s ease;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #1a1a1a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   MENU OVERLAY
+   ========================= */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 /* =========================
@@ -232,7 +257,7 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  margin-top: 0; /* Empieza desde arriba del todo */
+  margin-top: 0;
 }
 
 .hero-img {
@@ -240,14 +265,13 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  animation: slowZoom 12s ease-out forwards;
 }
 
 .hero-text-overlay {
   position: absolute;
-  /* Subimos del 10% al 14% para ese cm extra hacia arriba */
-  bottom: 14%; 
-  /* Mantenemos el margen que ya aplicaste para la izquierda */
-  right: 110px; 
+  bottom: 14%;
+  right: 110px;
   text-align: right;
   color: #ffffff;
   z-index: 2;
@@ -262,73 +286,87 @@ body {
   font-weight: 400;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
-  animation: luxuryFadeIn 2s ease-out forwards;
 }
 
 .hero-tagline {
   display: block;
   font-family: 'Inter', sans-serif;
-  font-size: 15px;           /* Aumentamos un poco el tamaño */
-  font-weight: 200;           /* Lo hacemos más fino (Extra Light) */
-  letter-spacing: 6px;        /* Espaciado generoso para elegancia */
+  font-size: 15px;
+  font-weight: 200;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: #ffffff;
   opacity: 0.9;
-  margin-top: 25px;           /* Más aire respecto al título */
-  
-  /* Animación */
-  animation: luxuryFadeIn 2s ease-out forwards;
-  animation-delay: 0.8s;
-  opacity: 0; 
+  margin-top: 25px;
+  animation: luxuryFadeIn 2s ease-out forwards 0.8s;
 }
-.hero-text-overlay h1, 
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+
+.arrow-down {
+  font-size: 24px;
+  color: #ffffff;
+  opacity: 0.7;
+}
 
 /* =========================
-   ANIMACIÓN ZOOM PORTADA
+   ANIMACIONES
    ========================= */
-
-/* 1. Contenedor del Hero: Aseguramos que la foto no se salga de los bordes al crecer */
-.hero {
-  overflow: hidden; 
-  position: relative;
-}
-
-/* 2. La imagen: Aplicamos la animación */
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  
-  /* Nombre de la animación | Duración | Modo (suave) | Infinito (o solo una vez) */
-  animation: slowZoom 12s ease-out forwards;
-}
-
-/* 3. Definición de los pasos del Zoom */
 @keyframes slowZoom {
   0% {
-    transform: scale(1); /* Tamaño original */
+    transform: scale(1);
   }
   100% {
-    transform: scale(1.04); /* Crece un 10% */
+    transform: scale(1.04);
   }
 }
+
+@keyframes luxuryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
 /* =========================
    SECTIONS
    ========================= */
-.section { 
-  padding: 110px 5%; 
+.section {
+  padding: 110px 5%;
   text-align: center;
 }
 
-/* Reglas específicas para que el menú no tape los títulos al saltar */
-#collection-dynamics, 
+#collection-dynamics,
 #collection-minimini {
-  scroll-margin-top: 130px; /* Espacio extra para que se vea The Collection y Dynamics */
+  scroll-margin-top: 130px;
 }
+
 .collection-dynamics {
-  margin-bottom: 120px; /* NUEVO: espacio extra antes de MiniMini */
+  margin-bottom: 120px;
 }
+
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 34px;
@@ -338,95 +376,102 @@ body {
   margin: 24px 0 32px;
   display: inline-block;
 }
+
 .subsection-title {
+  font-family: 'Playfair Display', serif;
   text-align: center;
-  margin-top: 15px;      /* Espacio reducido para que parezcan un solo bloque */
+  margin-top: 15px;
   margin-bottom: 60px;
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 1px;
   text-transform: capitalize;
 }
-.section-title + .subsection-title { margin-top: 40px; }
+
+.section-title + .subsection-title {
+  margin-top: 40px;
+}
 
 /* =========================
    COLLECTION / ANIMALS
    ========================= */
-   .brand-eyebrow {
-  display: none; /* Esto oculta la palabra Portfolio sin borrarla del HTML */
+.brand-eyebrow {
+  display: none;
 }
-/* Unificamos el control de todas las galerías para que sean elegantes */
+
 .collection-dynamics,
 .collection-minimini {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px; /* Espacio generoso para que cada animal sea protagonista */
+  gap: 80px;
   margin: 60px 0;
 }
 
-.animal { 
-  width: 100%;         /* El contenedor del animal se expande al máximo */
-  max-width: none;     /* Eliminamos cualquier tope anterior */
-  margin-bottom: 80px; /* Espacio generoso entre piezas (aire editorial) */
+.animal {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 80px;
   text-align: center;
 }
+
 .contact-images {
   display: grid;
-  /* Subimos el mínimo a 250px para que las fotos tengan presencia y no sean diminutas */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
   margin-top: 40px;
   margin-bottom: 60px;
-  /* EL TRUCO: max-width evita que las fotos se estiren al infinito en monitores grandes */
-  max-width: 1200px; 
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Imagen protagonista */
-.animal img { 
-  width: 100%;       /* Ocupa todo el ancho disponible (90% de la pantalla) */
-  height: auto;      /* Mantiene la proporción ORIGINAL sin recortar nada */
+.animal img {
+  width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
   transition: opacity 0.6s ease;
 }
 
-/* Efecto premium al pasar el ratón */
 .animal:hover img {
-  transform: scale(1.02); /* Un movimiento muy sutil de lente */
+  transform: scale(1.02);
 }
 
 .animal-name {
   margin-top: 15px;
-  font-size: 17px;       /* Más pequeño y elegante */
+  font-size: 17px;
   font-weight: 300;
-  letter-spacing: 4px;   /* Mucho aire entre letras */
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #222222;
-  opacity: 0.7;          /* Color más suave, no un negro tan fuerte */
+  opacity: 0.7;
 }
 
 /* =========================
    BACKGROUND SECTIONS
    ========================= */
 .bg {
-  min-height:100vh;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  padding-top:60px;
-  padding-bottom:60px;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
-/* Forzamos a Craft a comportarse como una sección de impacto total */
+
 .craft {
+  position: relative;
   background-image: url("../images/backgrounds/craftsmanship.webp");
-  background-attachment: scroll; /* Asegura que la imagen se mueva con el scroll si prefieres */
+  background-size: cover;
+  background-position: center;
 }
-.heritage { background-image: url("../images/backgrounds/heritage.webp"); }
-.craft { background-image: url("../images/backgrounds/craftsmanship.webp"); }
+
+.heritage {
+  background-image: url("../images/backgrounds/heritage.webp");
+}
+
 .eco {
   min-height: 100vh;
   display: flex;
@@ -436,44 +481,47 @@ body {
   background-position: center;
   position: relative;
 }
-.maintenance { background-image: url("../images/backgrounds/maintenance.webp"); }
 
 .overlay {
-  background: #ffffff; 
-  padding: 40px 50px;    /* Reducimos el padding exagerado de 80px */
-  max-width: 400px;      /* ANTES 550px -> AHORA 400px (Mucho más pequeño) */
+  background: #ffffff;
+  padding: 40px 50px;
+  max-width: 400px;
   margin-left: 10%;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.03); /* Sombra aún más sutil */
-  text-align: left;      /* Alineación a la izquierda para look editorial */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03);
+  text-align: left;
 }
 
-/* Añadimos este ajuste para el texto dentro del cuadro */
-.overlay p { 
-  font-size: 15px;       /* Bajamos de 17px a 15px para elegancia */
-  line-height: 1.8; 
-  color: #555;           /* Gris un poco más suave */
-  font-weight: 300;      /* Inter más fina */
+.overlay p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 300;
   font-family: 'Inter', sans-serif;
 }
-/* Si tienes títulos dentro del cuadro blanco */
-.overlay h2, .overlay h3 {
+
+.overlay h2,
+.overlay h3 {
   font-size: 22px;
   margin-bottom: 15px;
   font-weight: 400;
   letter-spacing: 1px;
 }
-.overlay blockquote { margin-top:24px; font-style:italic; }
+
+.overlay blockquote {
+  margin-top: 24px;
+  font-style: italic;
+}
 
 /* FULL IMAGES */
-.full-image, .final-image img { width:100%; display:block; }
-
-/* HEADINGS */
-h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
+.full-image,
+.final-image img {
+  width: 100%;
+  display: block;
+}
 
 /* =========================
    HERITAGE — EDITORIAL BLOCK
    ========================= */
-
 .heritage {
   min-height: 100vh;
   display: flex;
@@ -483,13 +531,14 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 }
 
 .heritage-overlay {
-  background: rgba(247, 246, 242, 0.88); /* mismo tono del body */
+  font-family: 'Playfair Display', serif;
+  background: rgba(247, 246, 242, 0.88);
   backdrop-filter: blur(2px);
   padding: 36px 44px;
   max-width: 340px;
   margin-left: 10%;
   margin-top: 180px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
   text-align: left;
   border-radius: 1px;
   background: linear-gradient(
@@ -497,37 +546,34 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
     rgba(247, 246, 242, 0.85)
   );
 }
+
 .heritage-overlay h2 {
   font-size: 19px;
   font-weight: 400;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 32px;
   color: #222222;
   text-transform: uppercase;
   opacity: 0.75;
-  
 }
 
 .heritage-overlay p {
   font-size: 14.5px;
   line-height: 1.7;
   font-weight: 300;
-  color: rgba(0,0,0,0.65);
+  color: rgba(0, 0, 0, 0.65);
   margin: 0;
 }
+
 .heritage-overlay p br + br {
   content: "";
   display: block;
   margin-top: 22px;
 }
+
 /* =========================
    CRAFT — AUTHORIAL BLOCK
    ========================= */
-
-.craft {
-  position: relative;
-}
-
 .craft-overlay {
   position: relative;
   top: 50%;
@@ -538,34 +584,31 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   color: #ffffff;
 }
 
-/* Título Craft */
 .craft-overlay h2 {
   font-family: 'Inter', sans-serif;
-  font-size: 24px;          /* antes 19px */
+  font-size: 24px;
   font-weight: 300;
-  letter-spacing: 2.5px;    /* antes 4px */
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   margin-bottom: 28px;
   color: #ffffff;
   opacity: 0.75;
-  margin-left: 0;
 }
 
-/* Texto Craft */
 .craft-overlay p {
   font-family: 'Playfair Display', serif;
-  font-size: 19px;          /* antes 24px */
-  font-weight: 300;         /* antes 400 */
+  font-size: 19px;
+  font-weight: 300;
   line-height: 1.5;
   color: #ffffff;
   max-width: 360px;
-  margin-left: 0;
 }
-  
+
 .craft-overlay p br {
   display: block;
   margin-bottom: 10px;
 }
+
 .craft-line {
   position: absolute;
   top: 50%;
@@ -576,10 +619,10 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   background-color: rgba(255, 255, 255, 0.25);
   pointer-events: none;
 }
+
 /* =========================
    SUSTAINABILITY — EDITORIAL BLOCK
    ========================= */
-
 .eco-overlay {
   background: linear-gradient(
     rgba(247, 246, 242, 0.94),
@@ -589,7 +632,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   padding: 38px 42px;
   max-width: 340px;
   margin-left: 10%;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.04);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.04);
   text-align: left;
   border-radius: 1px;
 }
@@ -597,7 +640,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 .eco-overlay h2 {
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: 6px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 34px;
   color: #222222;
@@ -609,18 +652,19 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   font-size: 15.5px;
   line-height: 1.85;
   font-weight: 300;
-  color: rgba(0,0,0,0.78);
+  color: rgba(0, 0, 0, 0.78);
   margin: 0;
 }
+
 .eco::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
-  to right,
-  rgba(0,0,0,0.12),
-  rgba(0,0,0,0.03)
-);
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.03)
+  );
   pointer-events: none;
 }
 
@@ -633,35 +677,24 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   display: flex;
   align-items: center;
   padding: 0;
-  background-image: url("../images/backgrounds/maintenance.webp"); /* ver sugerencia abajo */
+  background-image: url("../images/backgrounds/maintenance.webp");
   background-size: cover;
   background-position: 25% center;
   overflow: hidden;
+  background-color: #f7f6f2;
 }
 
-/* Overlay sutil para mejorar contraste */
 .maintenance::before {
   content: "";
   position: absolute;
   inset: 0;
-  /* HEMOS BAJADO LOS VALORES DE 0.92 a 0.6 y de 0.3 a 0.1 */
   background: linear-gradient(
-    to right, 
-    rgba(247, 246, 242, 0.2), 
+    to right,
+    rgba(247, 246, 242, 0.2),
     rgba(247, 246, 242, 0.1)
   );
   pointer-events: none;
   z-index: 1;
-}
-
-/* 2. Opcional: Si quieres que la foto tenga más fuerza, 
-      podemos añadir un ligero oscurecimiento general */
-.maintenance {
-  background-image: url("../images/backgrounds/maintenance.webp");
-  background-size: cover;
-  background-position: center;
-  /* Esto ayuda a que el texto blanco/negro resalte según la foto */
-  background-color: #f7f6f2; 
 }
 
 .maintenance-overlay {
@@ -689,7 +722,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   font-size: 15.5px;
   font-weight: 300;
   line-height: 1.9;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 22px;
 }
 
@@ -697,50 +730,23 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   font-family: 'Playfair Display', serif;
   font-size: 13.5px;
   font-weight: 300;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
   line-height: 1.6;
   margin-top: 6px;
 }
 
-/* Animación zoom del fondo */
-.maintenance {
-  animation: none;
-}
-
-@keyframes slowZoom {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.04); }
-}
-
-/* Animación entrada premium */
-@keyframes luxuryFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-
-
 /* =========================
    PACKAGING
    ========================= */
-
 .packaging {
   position: relative;
   background-color: #f7f6f2;
-  padding: 110px 5%; /* Más aire arriba */
+  padding: 110px 5%;
   text-align: center;
 }
 
 .packaging .divider {
-  width: 180px; /* ligeramente más pequeño */
+  width: 180px;
   height: 1px;
   background-color: #c0c0c0;
   margin: 32px auto;
@@ -755,11 +761,9 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   margin: 24px auto 64px;
   letter-spacing: 0.3px;
   color: #222222;
-  font-style: italic;
   opacity: 0.85;
 }
 
-/* Imagen full-width */
 .packaging .full-image {
   width: 100%;
   height: auto;
@@ -768,55 +772,67 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   margin-bottom: 32px;
   transition: transform 0.6s ease;
 }
+
 .packaging .full-image:hover {
-  transform: scale(1.01); /* micro movimiento premium */
+  transform: scale(1.01);
 }
 
 /* =========================
    CONTACTO
    ========================= */
-
 .contact-images {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;           /* Espacio entre las 3 imágenes */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
   margin: 50px auto;
-  max-width: 1000px;   /* Esto hace que las fotos no crezcan demasiado */
+  max-width: 1000px;
   width: 90%;
 }
+
 .contact-item {
   flex: 1;
-  max-width: 280px;    /* Aquí controlas el tamaño: más pequeño = fotos más pequeñas */
+  max-width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.contact-item img { 
-  width: 100%; 
-  aspect-ratio: 1 / 1; 
-  object-fit: cover; 
+.contact-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   display: block;
   border-radius: 2px;
 }
+
 .contact-caption {
   margin-top: 15px;
-  /* Forzamos la misma tipografía del body */
-  font-family: 'Inter', -apple-system, sans-serif; 
-  font-size: 14px;            /* Tamaño similar a los animales */
-  font-weight: 300;           /* Grosor ligero, coherente con la marca */
-  color: #222222;             /* El mismo negro suave que usas arriba */
-  text-transform: capitalize; /* Primera letra Mayúscula */
-  letter-spacing: 2px;        /* Un poco de aire para que sea elegante, pero no tanto como el 90% */
-  opacity: 0.8;               /* Le damos ese toque sutil de "pie de página" */
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #222222;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  opacity: 0.8;
 }
+
 .contact-divider {
   width: 180px;
   height: 1px;
   background-color: #c0c0c0;
   margin: 32px auto;
 }
+
+.contact-location,
+.contact-address,
+.contact-email,
+.contact-phone {
+  font-size: 14px;
+  font-weight: 300;
+  color: #222222;
+  margin: 8px 0;
+}
+
 /* =========================
    COOKIE POPUP
    ========================= */
@@ -825,13 +841,13 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(30,30,30,0.95);
+  background: rgba(30, 30, 30, 0.95);
   color: #fff;
   padding: 16px 24px;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 2000;
-  display: none; 
+  display: none;
   align-items: center;
   gap: 12px;
   font-size: 14px;
@@ -857,6 +873,7 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
   padding: 40px 10%;
   font-size: 14px;
 }
+
 .site-footer a {
   color: #222222;
   text-decoration: underline;
@@ -864,144 +881,8 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 }
 
 /* =========================
-   MOBILE (<=768px)
-   ========================= */
-@media (max-width:768px) {
-
-  .header-inner { justify-content:center; padding:0 16px; }
-  .logo { height:32px; display:block; margin:0 auto; }
-
-  .menu-toggle { display:flex; position:absolute; right:16px; top:50%; transform:translateY(-50%); }
-
-  .main-nav {
-    display:none;
-    position:fixed;
-    top:0;
-    left:-250px;
-    width:250px;
-    height:100%;
-    background:#fff;
-    box-shadow:5px 0 30px rgba(0,0,0,0.05);
-    transition:left 0.3s ease;
-    flex-direction:column;
-    z-index:1001;
-    padding-top:80px;
-    padding-left:40px;
-    padding-right:20px;
-    overflow-y: auto; 
-  }
-  .main-nav.open { left:0; display:flex; }
-
-  .close-menu {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 40px; 
-    font-weight: 200; 
-    color: #222222;
-    line-height: 1;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1002;
-  }
-
-  .main-nav ul, .main-nav li { margin:0; padding:0; list-style:none; flex-direction:column; }
-  .main-nav > ul > li { width:100%; }
-  .main-nav > ul > li > a {
-    display:block;
-    padding:12px 0;
-    text-align:left;
-    font-size:20px;
-    border-bottom:1px solid #f2f2f2;
-  }
-  .has-submenu .submenu {
-    display: none; 
-    position: static;
-    box-shadow: none;
-    padding: 0 0 10px 20px;
-    background: none;
-  }
-  .has-submenu.active .submenu { display: block; }
-  .has-submenu .submenu li a {
-    font-size: 16px;
-    color: #888;
-    border-bottom: none;
-    padding: 8px 0;
-  }
-
-  .hero-text-overlay {
-    position: static;
-    text-align: center;
-    max-width: 90%;
-    margin: 0 auto;
-    transform: none;
-  }
-.collection-dynamics,
-.collection-minimini {
-  grid-template-columns: 1fr;
-  gap: 80px;
-  margin: 80px auto 120px;
-}
-.animal {
-    max-width: 100%;
-  }
-.collection-dynamics,
-  .collection-minimini {
-    padding: 0 6vw;
-  }
-.contact-item {
-  max-width: 100%; /* En móvil permitimos que ocupen más ancho si es necesario */
-}
-  .contact-caption { font-size: 12px; }
-
-  .lang-switch { display:none; }
-}
-.craft-overlay {
-    position: static;
-    max-width: 90%;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.35);
-    padding: 24px;
-  }
-
-.maintenance-overlay {
-    max-width: 90%;
-    margin-left: 5%;
-  }
-  .maintenance-overlay h2 { font-size: 18px; }
-  .maintenance-overlay p { font-size: 15px; }
-  .maintenance-overlay .microcopy { font-size: 14px; }
-
-  
-/* Animación de entrada premium */
-@keyframes luxuryFadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); /* Empieza 20px más abajo */
-    filter: blur(5px);           /* Empieza un poco borroso */
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);    /* Sube a su posición original */
-    filter: blur(0);             /* Se enfoca totalmente */
-  }
-  .packaging-gallery {
-  gap: 20px;
-  padding: 0 5vw 20px;
-}
-
-.gallery-item {
-  width: 70%; /* más grande en móvil para swipe natural */
-}
-}
-
-/* =========================
    GLOBAL OVERLAY RHYTHM REFINEMENT
    ========================= */
-
 .heritage-overlay,
 .eco-overlay,
 .maintenance-overlay {
@@ -1014,60 +895,17 @@ h3 { font-size:26px; font-weight:400; letter-spacing:0.4px; }
 .maintenance-overlay p {
   margin-bottom: 26px;
 }
+
 p {
   letter-spacing: 0.2px;
 }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.2rem;
-  color: #ffffff;
-  opacity: 0.75;
-  animation: bounce 1.5s infinite;
-  z-index: 2;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(12px); }
-}   
-/* PACKAGING - GALERÍA HORIZONTAL */
-.packaging-gallery {
-  display: flex;
-  gap: 40px; /* espacio generoso entre fotos */
-  overflow-x: auto; /* permite scroll horizontal */
-  scroll-snap-type: x mandatory; /* cada foto “snap” al centro */
-  padding-bottom: 20px;
-  margin: 40px auto 60px; /* aire editorial */
-}
-
-.gallery-item {
-  flex: 0 0 auto;
-  width: 300px; /* ajustable según tu preferencia */
-  scroll-snap-align: center;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item img {
-  width: 100%;
-  border-radius: 2px; /* sutil lujo */
-  display: block;
-  object-fit: cover;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.02); /* micro-zoom elegante */
-}
 /* =========================
    PACKAGING — SINGLE IMAGE
    ========================= */
-
 .packaging-image {
   width: 100%;
-  max-width: 1600px;   /* editorial, no infinito */
+  max-width: 1600px;
   margin: 80px auto 0;
 }
 
@@ -1077,4 +915,453 @@ p {
   display: block;
 }
 
+::selection {
+  background: rgba(0, 0, 0, 0.08);
+  color: #000;
+}
 
+/* =========================
+   CORRECCIÓN TIPOGRAFÍA OVERLAYS
+   ========================= */
+.heritage-overlay h2,
+.craft-overlay h2,
+.eco-overlay h2,
+.maintenance-overlay h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+.heritage-overlay,
+.craft-overlay,
+.eco-overlay,
+.maintenance-overlay {
+  font-family: 'Playfair Display', serif;
+}
+
+/* =========================
+   TABLET (769px - 1024px)
+   ========================= */
+@media (max-width: 1024px) {
+  .header-inner {
+    padding: 0 40px 15px 20px;
+  }
+
+  .main-nav ul {
+    gap: 8px;
+  }
+
+  .main-nav a {
+    font-size: 12px;
+  }
+
+  .hero-text-overlay {
+    right: 50px;
+  }
+
+  .hero-text-overlay h1 {
+    font-size: 48px;
+    max-width: 400px;
+  }
+
+  .section {
+    padding: 80px 5%;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .subsection-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .heritage-overlay,
+  .eco-overlay,
+  .maintenance-overlay {
+    max-width: 300px;
+    padding: 30px 35px;
+  }
+
+  .craft-overlay {
+    max-width: 300px;
+  }
+
+  .craft-overlay p {
+    font-size: 17px;
+  }
+
+  .animal-name {
+    font-size: 14px;
+  }
+
+  .contact-images {
+    width: 95%;
+    gap: 30px;
+  }
+
+  .packaging-image {
+    margin: 60px auto 0;
+  }
+}
+
+/* =========================
+   MOBILE (<=768px)
+   ========================= */
+@media (max-width: 768px) {
+  /* Header Mobile */
+  .site-header {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 70px;
+  }
+
+  .logo {
+    height: 20px;
+    filter: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #ffffff;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 1001;
+    overflow-y: auto;
+    transform: none;
+    transition: left 0.3s ease;
+  }
+
+  .main-nav.open {
+    left: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main-nav > ul > li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .main-nav > ul > li > a {
+    display: block;
+    padding: 16px 0;
+    font-size: 16px;
+    color: #222222;
+    text-shadow: none;
+  }
+
+  .main-nav > ul > li > a::after {
+    display: none;
+  }
+
+  .has-submenu .submenu {
+    position: static;
+    display: none;
+    background: #f9f9f9;
+    padding: 10px 0 10px 20px;
+  }
+
+  .has-submenu.active .submenu {
+    display: flex;
+  }
+
+  .has-submenu .submenu a {
+    color: #666666;
+    font-size: 14px;
+    text-shadow: none;
+    padding: 8px 0;
+  }
+
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #222222;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+  }
+
+  .lang-switch {
+    display: none;
+  }
+
+  /* Hero Mobile */
+  .hero {
+    height: 60vh;
+    margin-top: 70px;
+  }
+
+  .hero-text-overlay {
+    position: static;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    transform: none;
+    bottom: auto;
+    right: auto;
+    padding: 40px 20px;
+    animation: none;
+  }
+
+  .hero-text-overlay h1 {
+    font-size: 32px;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .hero-tagline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-top: 15px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Sections Mobile */
+  .section {
+    padding: 60px 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .subsection-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .brand-eyebrow {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999999;
+    margin-bottom: 10px;
+  }
+
+  /* Collection Mobile */
+  .collection-dynamics,
+  .collection-minimini {
+    gap: 40px;
+    margin: 40px 0;
+  }
+
+  .animal {
+    margin-bottom: 40px;
+  }
+
+  .animal-name {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* Background Sections Mobile */
+  .bg {
+    min-height: auto;
+    padding: 40px 16px;
+    align-items: flex-start;
+  }
+
+  .heritage {
+    padding-top: 80px;
+  }
+
+  .heritage-overlay {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 24px;
+    background: rgba(247, 246, 242, 0.95);
+  }
+
+  .heritage-overlay h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .heritage-overlay p {
+    font-size: 13px;
+  }
+
+  .craft-overlay {
+    position: static;
+    max-width: 100%;
+    transform: none;
+    right: auto;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .craft-overlay h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .craft-overlay p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .craft-line {
+    display: none;
+  }
+
+  .eco-overlay {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 24px;
+    background: rgba(247, 246, 242, 0.95);
+  }
+
+  .eco-overlay h2 {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .eco-overlay p {
+    font-size: 13px;
+  }
+
+  .maintenance-overlay {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 24px;
+  }
+
+  .maintenance-overlay h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .maintenance-overlay p {
+    font-size: 13px;
+  }
+
+  .maintenance-overlay .microcopy {
+    font-size: 12px;
+  }
+
+  /* Packaging Mobile */
+  .packaging {
+    padding: 60px 16px;
+  }
+
+  .packaging p {
+    font-size: 14px;
+    margin: 16px auto 40px;
+  }
+
+  .packaging .divider {
+    width: 120px;
+    margin: 24px auto;
+  }
+
+  .packaging-image {
+    margin: 40px auto 0;
+  }
+
+  /* Contact Mobile */
+  .contact-images {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 30px auto;
+  }
+
+  .contact-item {
+    max-width: 100%;
+  }
+
+  .contact-caption {
+    font-size: 12px;
+  }
+
+  .contact-divider {
+    width: 120px;
+    margin: 24px auto;
+  }
+
+  .contact-location,
+  .contact-address,
+  .contact-email,
+  .contact-phone {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+
+  /* Footer Mobile */
+  .site-footer {
+    padding: 30px 16px;
+    font-size: 12px;
+  }
+
+  .site-footer a {
+    display: block;
+    margin: 8px 0;
+    text-decoration: underline;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (<=480px)
+   ========================= */
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0 12px;
+  }
+
+  .hero-text-overlay h1 {
+    font-size: 24px;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+  }
+
+  .section {
+    padding: 40px 12px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .subsection-title {
+    font-size: 18px;
+  }
+
+  .contact-images {
+    gap: 16px;
+  }
+
+  .packaging p {
+    font-size: 13px;
+  }
+}
